@@ -1,0 +1,20 @@
+﻿
+@switch (Mode)
+{
+    case Modes.Show:
+        <h3>Conference Details</h3>
+        break;
+
+    case Modes.New:
+        <h3>New Conference</h3>
+        break;
+
+    case Modes.Edit:
+        <h3>Edit Conference</h3>
+        break;
+}
+
+@code {
+    [Parameter]
+    public string Mode { get; set; }
+}
