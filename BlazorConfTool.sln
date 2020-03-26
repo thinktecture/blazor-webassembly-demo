@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorConfTool.Client", "Bl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorConfTool.Shared", "BlazorConfTool\Shared\BlazorConfTool.Shared.csproj", "{0C641C3A-D6EA-4587-90C8-925DB7684B6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorConfTool.Desktop", "BlazorConfTool\Desktop\BlazorConfTool.Desktop.csproj", "{0E423FD0-2941-4819-9665-7F64A60DD47F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorConfTool.Desktop", "BlazorConfTool\Desktop\BlazorConfTool.Desktop.csproj", "{0E423FD0-2941-4819-9665-7F64A60DD47F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

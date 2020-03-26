@@ -1,0 +1,49 @@
+﻿@page "/dragdrop"
+
+<h1>Drag & Drop</h1>
+
+<ul>
+    <li draggable="true" @ondragstart="OnDragStart" class="draggable">
+        Drag
+    </li>
+</ul>
+
+<div dropzone="move" @ondrop="OnDrop" ondragover="event.preventDefault();" class="droppable">
+    Drop
+</div>
+
+<div>@DragState</div>
+
+<style>
+    .draggable {
+        background-color: red;
+        color: white;
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        border-color: black;
+    }
+
+    .droppable {
+        background-color: blue;
+        color: white;
+        width: 200px;
+        height: 200px;
+        padding: 5px;
+        border-color: black;
+    }
+</style>
+
+@code {
+    public string DragState = "Waiting.";
+
+    public void OnDragStart(DragEventArgs dragEventArgs)
+    {
+        DragState = "Drag started...";
+    }
+
+    public void OnDrop(DragEventArgs dragEventArgs)
+    {
+        DragState = "Dropped!";
+    }
+}
