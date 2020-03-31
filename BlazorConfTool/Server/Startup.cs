@@ -90,7 +90,7 @@ namespace BlazorConfTool.Server
             {
                 app.UseDeveloperExceptionPage();
                 app.UseWebAssemblyDebugging();
-                app.UseCssLiveReload();
+                //app.UseCssLiveReload();
             }
 
             app.UseStaticFiles();

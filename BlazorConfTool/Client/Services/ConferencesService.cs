@@ -23,7 +23,7 @@ namespace BlazorConfTool.Client.Services
             _httpClient = httpClient;
             _conferencesUrl = new Uri(new Uri(_baseUrl), "api/conferences/").ToString();
             _statisticsUrl = new Uri(new Uri(_baseUrl), "api/statistics/").ToString();
-    }
+        }
 
         public async Task Init()
         {
