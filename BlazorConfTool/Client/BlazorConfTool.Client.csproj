@@ -12,15 +12,15 @@
   <ItemGroup>
     <PackageReference Include="Blazored.FluentValidation" Version="1.2.0" />
     <PackageReference Include="Blazored.Toast" Version="2.0.9" />
-    <PackageReference Include="Blazored.Typeahead" Version="4.2.2" />
-    <PackageReference Include="Grpc.Net.Client.Web" Version="2.27.0-pre1" />
+    <PackageReference Include="Blazored.Typeahead" Version="4.3.0" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.28.0-pre2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0-preview3.20168.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0-preview3.20168.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.2" />
-    <PackageReference Include="Sotsera.Blazor.Oidc" Version="1.0.0-alpha-7" />
+    <PackageReference Include="Sotsera.Blazor.Oidc" Version="1.0.0-alpha-8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\BlazorConfTool.Shared.csproj" />
