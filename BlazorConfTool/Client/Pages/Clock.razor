@@ -1,0 +1,60 @@
+﻿@page "/clock"
+
+@using System.Timers
+
+<div class="clock">
+    <span class="@_css">@_currentTime</span>
+</div>
+
+<style>
+    ﻿.clock {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .clock-running {
+        font-family: consolas;
+        font-size: 30px;
+        padding: 10px;
+        background: #000;
+        color: lightgreen;
+    }
+
+    .clock-initializing {
+        color: red;
+        font-family: consolas;
+        font-size: 30px;
+        padding: 5px;
+        background: #000;
+    }
+</style>
+
+@code {
+    private string _currentTime = "...";
+    private string _css = "clock-initializing";
+    private Timer _timer;
+
+    protected override Task OnInitializedAsync()
+    {
+        StartTimer();
+
+        return base.OnInitializedAsync();
+    }
+
+    private Task TimerTick()
+    {
+        _currentTime = DateTime.Now.ToLongTimeString();
+        _css = "clock-running";
+
+        this.InvokeAsync(StateHasChanged);
+
+        return Task.CompletedTask;
+    }
+
+    private void StartTimer()
+    {
+        _timer = new Timer(1000);
+        _timer.Elapsed += async (sender, e) => await TimerTick();
+        _timer.Start();
+    }
+}
