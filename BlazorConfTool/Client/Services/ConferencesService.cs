@@ -11,7 +11,7 @@ namespace BlazorConfTool.Client.Services
     public class ConferencesService
     {
         private OidcHttpClient _httpClient;
-        private readonly string _baseUrl = "https://localhost:44323/";
+        private readonly string _baseUrl = "https://localhost:5003/";
         private string _conferencesUrl;
         private string _statisticsUrl;
         private HubConnection _hubConnection;
