@@ -8,7 +8,7 @@ namespace BlazorConfTool.Client.Services
     public class CountriesService
     {
         private HttpClient _httpClient;
-        private string _countriesUrl = "https://localhost:44323/api/countries/";
+        private string _countriesUrl = "https://localhost:5003/api/countries/";
 
         public CountriesService(HttpClient httpClient)
         {
