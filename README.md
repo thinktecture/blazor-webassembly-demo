@@ -1,2 +1,2 @@
-# ASP.NET Core Blazor WebAssembly demo application
-Sample application for ASP.NET Core Blazor WebAssembly sessions.
+# Blazor WebAssembly client with ASP.NET Core Web APIs, SignalR and gRPC/gRPC-Web server
+Sample application for various articles, webinars, conference sessions.
