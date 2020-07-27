@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Client", "Client\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Shared", "Shared\ConfTool.Shared.csproj", "{FD6E53A5-4802-499A-9DE9-1147761C8379}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Tools", "ConfTool.Tools\ConfTool.Tools.csproj", "{290B3E4F-A2D8-4BED-BBDC-64E54CB39E88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Tools", "Tools\ConfTool.Tools.csproj", "{290B3E4F-A2D8-4BED-BBDC-64E54CB39E88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
