@@ -40,7 +40,6 @@ namespace ConfTool.Client
 
             builder.Services.AddBlazoredToast();
 
-            // TODO: This should be a Singleton, right?
             builder.Services.AddScoped(services =>
             {
                 var baseAddressMessageHandler = services.GetRequiredService<BaseAddressAuthorizationMessageHandler>();
