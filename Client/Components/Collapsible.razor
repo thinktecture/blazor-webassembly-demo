@@ -16,7 +16,7 @@
     [Parameter]
     public bool Collapsed { get; set; }
     
-    public string ActionText { get => Collapsed ? "Expand" : "Collapse"; }
+    private string ActionText { get => Collapsed ? "Expand" : "Collapse"; }
     
     public void Toggle()
     {

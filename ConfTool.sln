@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Shared", "Shared\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Tools", "Tools\ConfTool.Tools.csproj", "{290B3E4F-A2D8-4BED-BBDC-64E54CB39E88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Tests", "Tests\ConfTool.Tests.csproj", "{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{290B3E4F-A2D8-4BED-BBDC-64E54CB39E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290B3E4F-A2D8-4BED-BBDC-64E54CB39E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{290B3E4F-A2D8-4BED-BBDC-64E54CB39E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
