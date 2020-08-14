@@ -12,14 +12,14 @@ using Microsoft.Extensions.Logging;
 
 namespace ConfTool.Server.gRPC
 {
-    public class ConferencesService : IConferencesService
+    public class ConferencesServiceCodeFirst : IConferencesService
     {
-        private readonly ILogger<ConferencesService> _logger;
+        private readonly ILogger<ConferencesServiceCodeFirst> _logger;
         private readonly ConferencesDbContext _conferencesDbContext;
         private readonly IMapper _mapper;
         private readonly IHubContext<ConferencesHub> _hubContext;
 
-        public ConferencesService(ILogger<ConferencesService> logger, ConferencesDbContext conferencesDbContext, IMapper mapper, IHubContext<ConferencesHub> hubContext)
+        public ConferencesServiceCodeFirst(ILogger<ConferencesServiceCodeFirst> logger, ConferencesDbContext conferencesDbContext, IMapper mapper, IHubContext<ConferencesHub> hubContext)
         {
             _logger = logger;
             _conferencesDbContext = conferencesDbContext;

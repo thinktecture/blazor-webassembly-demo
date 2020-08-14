@@ -98,7 +98,7 @@ namespace ConfTool.Server
             {
                 endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb();
                 endpoints.MapGrpcService<CounterService>().EnableGrpcWeb();
-                endpoints.MapGrpcService<ConferencesService>().EnableGrpcWeb();
+                endpoints.MapGrpcService<ConferencesServiceCodeFirst>().EnableGrpcWeb();
 
                 endpoints.MapHub<ConferencesHub>("/conferencesHub");
 
