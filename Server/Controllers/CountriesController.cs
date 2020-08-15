@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace BlazorConfTool.Server.Controllers
+namespace ConfTool.Server.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

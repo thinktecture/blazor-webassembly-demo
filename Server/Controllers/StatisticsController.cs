@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using ConfTool.Server.Model;
 
-namespace BlazorConfTool.Server.Controllers
+namespace ConfTool.Server.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
