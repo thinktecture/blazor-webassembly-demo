@@ -2,7 +2,9 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Blazored.Toast;
+using ConfTool.Client.GrpcClient;
 using ConfTool.Client.Services;
+using Grpc.Core.Interceptors;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -46,7 +48,12 @@ namespace ConfTool.Client
                 baseAddressMessageHandler.InnerHandler = new HttpClientHandler();
                 var grpcWebHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, baseAddressMessageHandler);
 
-                return GrpcChannel.ForAddress(builder.HostEnvironment.BaseAddress, new GrpcChannelOptions { HttpHandler = grpcWebHandler });
+                var channel = GrpcChannel.ForAddress(builder.HostEnvironment.BaseAddress, new GrpcChannelOptions { HttpHandler = grpcWebHandler });
+
+                var invoker = channel.Intercept(new ClientLoggerInterceptor());
+                // ... what to do with invoker here?
+                
+                return channel;
             });
 
             builder.Services.AddApiAuthorization();

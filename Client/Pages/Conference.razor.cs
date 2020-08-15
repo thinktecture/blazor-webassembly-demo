@@ -1,4 +1,5 @@
-﻿using ConfTool.Client.Services;
+﻿using ConfTool.Client.Components;
+using ConfTool.Client.Services;
 using ConfTool.Shared.DTO;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -42,16 +43,16 @@ namespace ConfTool.Client.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            _isShow = Mode == Modes.Show;
+            _isShow = Mode == ConferenceComponentDisplayModes.Show;
 
             switch (Mode)
             {
-                case Modes.Show:
+                case ConferenceComponentDisplayModes.Show:
                     var conferenceResult = await _conferencesService.GetConferenceDetailsAsync(Id);
                     _conferenceDetails = conferenceResult;
                     break;
-                case Modes.Edit:
-                case Modes.New:
+                case ConferenceComponentDisplayModes.Edit:
+                case ConferenceComponentDisplayModes.New:
                     var countriesResult = await _countriesService.ListCountries();
                     _countries = countriesResult;
                     _conferenceDetails.Country = _countries[0];

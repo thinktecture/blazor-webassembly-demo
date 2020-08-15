@@ -1,9 +1,10 @@
 ﻿@page "/counter"
 
-@inject GrpcChannel Channel
-
 @using Grpc.Core
+@using Grpc.Net.Client
 @using Count
+
+@inject GrpcChannel Channel
 
 @attribute [Authorize]
 
