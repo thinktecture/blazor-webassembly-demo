@@ -8,10 +8,10 @@ namespace ConfTool.Tools
     {
         static void Main(string[] args)
         {
-            var generator = new SchemaGenerator(); // optional controls on here, we can add more add needed
-            var schema = generator.GetSchema<IConferencesService>(); // there is also a non-generic overload that takes Type
+            var generator = new SchemaGenerator();
+            var schema = generator.GetSchema<IConferencesService>();
 
-            Console.WriteLine("SCHEMA: " + schema);
+            Console.WriteLine("***ProtoBuf Schema***: \n\n" + schema);
         }
     }
 }
