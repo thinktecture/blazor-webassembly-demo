@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConfTool.Client.Services
 {
-    public class ConferencesService
+    public class ConferencesServiceHttp : IConferencesService
     {
         private IConfiguration _config;
         private HttpClient _secureHttpClient;
@@ -19,9 +19,9 @@ namespace ConfTool.Client.Services
         private string _statisticsUrl;
         private HubConnection _hubConnection;
 
-        public EventHandler ConferenceListChanged;
+        public event EventHandler ConferenceListChanged;
 
-        public ConferencesService(IConfiguration config, IHttpClientFactory httpClientFactory)
+        public ConferencesServiceHttp(IConfiguration config, IHttpClientFactory httpClientFactory)
         {
             _config = config;
             _secureHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI");
@@ -31,7 +31,7 @@ namespace ConfTool.Client.Services
             _statisticsUrl = new Uri(new Uri(_baseUrl), "api/statistics/").ToString();
         }
 
-        public async Task Init()
+        public async Task InitAsync()
         {
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl(new Uri(new Uri(_baseUrl), "conferencesHub"))
@@ -45,21 +45,21 @@ namespace ConfTool.Client.Services
             await _hubConnection.StartAsync();
         }
 
-        public async Task<List<ConferenceOverview>> ListConferences()
+        public async Task<List<ConferenceOverview>> ListConferencesAsync()
         {
             var result = await _secureHttpClient.GetFromJsonAsync<List<ConferenceOverview>>(_conferencesUrl);
-            
+
             return result;
         }
 
-        public async Task<ConferenceDetails> GetConferenceDetails(Guid id)
+        public async Task<ConferenceDetails> GetConferenceDetailsAsync(Guid id)
         {
             var result = await _secureHttpClient.GetFromJsonAsync<ConferenceDetails>(_conferencesUrl + id);
 
             return result;
         }
 
-        public async Task<ConferenceDetails> AddConference(ConferenceDetails conference)
+        public async Task<ConferenceDetails> AddConferenceAsync(ConferenceDetails conference)
         {
             var result = await (await _secureHttpClient.PostAsJsonAsync<ConferenceDetails>(_conferencesUrl, conference))
                 .Content.ReadFromJsonAsync<ConferenceDetails>();
@@ -67,7 +67,7 @@ namespace ConfTool.Client.Services
             return result;
         }
 
-        public async Task<dynamic> GetStatistics()
+        public async Task<dynamic> GetStatisticsAsync()
         {
             var result = await _anonHttpClient.GetFromJsonAsync<dynamic>(_statisticsUrl);
 

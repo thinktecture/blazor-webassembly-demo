@@ -22,7 +22,7 @@ namespace ConfTool.Client.Pages
         [Inject]
         private IAlertService _alert { get; set; }
         [Inject]
-        private ConferencesService _conferencesService { get; set; }
+        private IConferencesService _conferencesService { get; set; }
         [Inject]
         private CountriesService _countriesService { get; set; }
 
@@ -47,7 +47,7 @@ namespace ConfTool.Client.Pages
             switch (Mode)
             {
                 case Modes.Show:
-                    var conferenceResult = await _conferencesService.GetConferenceDetails(Id);
+                    var conferenceResult = await _conferencesService.GetConferenceDetailsAsync(Id);
                     _conferenceDetails = conferenceResult;
                     break;
                 case Modes.Edit:
@@ -67,7 +67,7 @@ namespace ConfTool.Client.Pages
                 return;
             }
 
-            await _conferencesService.AddConference(_conferenceDetails);
+            await _conferencesService.AddConferenceAsync(_conferenceDetails);
 
             Console.WriteLine("### NEW conference added...");
         }

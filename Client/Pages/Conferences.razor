@@ -8,7 +8,7 @@
 @implements IDisposable
  
 @inject NavigationManager _navigation
-@inject ConferencesService _conferencesService
+@inject IConferencesService _conferencesService
 
 <h1>Conferences</h1>
 
@@ -45,7 +45,7 @@ else
     {
         _conferencesService.ConferenceListChanged += HandleConferenceUpdates;
 
-        await _conferencesService.Init();
+        await _conferencesService.InitAsync();
 
         _conferences = await ListConferences();
     }
@@ -62,7 +62,7 @@ else
 
     private async Task<IEnumerable<ConferenceOverview>> ListConferences()
     {
-        return await _conferencesService.ListConferences();
+        return await _conferencesService.ListConferencesAsync();
     }
 
     private void LoadDetails(Guid id)
@@ -79,9 +79,6 @@ else
     {
         GC.SuppressFinalize(this);
 
-        if (_conferencesService.ConferenceListChanged != null)
-        {
-            _conferencesService.ConferenceListChanged -= HandleConferenceUpdates;
-        }
+        _conferencesService.ConferenceListChanged -= HandleConferenceUpdates;
     }
 }

@@ -6,7 +6,7 @@
 @implements IDisposable
 
 @inject IJSRuntime _js
-@inject ConferencesService _conferencesService
+@inject IConferencesService _conferencesService
 
 <h3>Statistics</h3>
 
@@ -39,7 +39,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await _conferencesService.GetStatistics();
+        var result = await _conferencesService.GetStatisticsAsync();
         _data = JsonSerializer.Serialize(result);
     }
 
