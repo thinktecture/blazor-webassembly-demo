@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProtoBuf.Grpc.Client;
 
 namespace ConfTool.Client
 {
@@ -36,13 +37,14 @@ namespace ConfTool.Client
                 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
                     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
             
-            builder.Services.AddScoped(services => services.GetRequiredService<IHttpClientFactory>().CreateClient("ConfTool.ServerAPI"));
+            //builder.Services.AddScoped<HttpClient>(services => 
+              //  services.GetRequiredService<IHttpClientFactory>().CreateClient("ConfTool.ServerAPI"));
 
             builder.Services.AddAlerts();
 
             builder.Services.AddBlazoredToast();
 
-            builder.Services.AddScoped(services =>
+            builder.Services.AddScoped<GrpcChannel>(services =>
             {
                 var baseAddressMessageHandler = services.GetRequiredService<BaseAddressAuthorizationMessageHandler>();
                 baseAddressMessageHandler.InnerHandler = new HttpClientHandler();
