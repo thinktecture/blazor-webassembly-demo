@@ -36,9 +36,6 @@ namespace ConfTool.Client
             builder.Services.AddHttpClient("ConfTool.ServerAPI", client => 
                 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
                     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
-            
-            //builder.Services.AddScoped<HttpClient>(services => 
-              //  services.GetRequiredService<IHttpClientFactory>().CreateClient("ConfTool.ServerAPI"));
 
             builder.Services.AddAlerts();
 
