@@ -42,7 +42,7 @@ namespace ConfTool.Server
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = "https://demo.identityserver.io";
+                    options.Authority = "https://localhost:5006";
                     options.Audience = "api";
                 });
 
