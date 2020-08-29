@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ProtoBuf.Grpc.Client;
 
 namespace ConfTool.Client
 {
@@ -42,16 +41,16 @@ namespace ConfTool.Client
 
             builder.Services.AddBlazoredToast();
 
+            builder.Services.AddScoped<GrpcChannel>(services =>
+            {
+                var channel = BuildGrpcChannel(builder, services);
+
+                return channel;
+            });
+
             builder.Services.AddScoped<CallInvoker>(services =>
             {
-                var baseAddressMessageHandler = services.GetRequiredService<BaseAddressAuthorizationMessageHandler>();
-                baseAddressMessageHandler.InnerHandler = new HttpClientHandler();
-                var grpcWebHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, baseAddressMessageHandler);
-
-                var channel = GrpcChannel.ForAddress(builder.HostEnvironment.BaseAddress, new GrpcChannelOptions { HttpHandler = grpcWebHandler });
-
-                // return channel;
-
+                var channel = BuildGrpcChannel(builder, services);
                 var invoker = channel.Intercept(new ClientLoggerInterceptor());
 
                 return invoker;
@@ -60,6 +59,17 @@ namespace ConfTool.Client
             builder.Services.AddApiAuthorization();
 
             await builder.Build().RunAsync();
+        }
+
+        private static GrpcChannel BuildGrpcChannel(WebAssemblyHostBuilder builder, IServiceProvider services)
+        {
+            var baseAddressMessageHandler = services.GetRequiredService<BaseAddressAuthorizationMessageHandler>();
+            baseAddressMessageHandler.InnerHandler = new HttpClientHandler();
+            var grpcWebHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, baseAddressMessageHandler);
+
+            var channel = GrpcChannel.ForAddress(builder.HostEnvironment.BaseAddress, new GrpcChannelOptions { HttpHandler = grpcWebHandler });
+
+            return channel;
         }
     }
 }
