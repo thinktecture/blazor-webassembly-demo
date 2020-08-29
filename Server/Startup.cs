@@ -42,8 +42,7 @@ namespace ConfTool.Server
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = "https://localhost:5006";
-                    options.Audience = "api";
+                    Configuration.Bind("Oidc");
                 });
 
             services.AddAuthorization(config =>
