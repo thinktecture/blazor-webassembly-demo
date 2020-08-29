@@ -7,14 +7,14 @@ using Microsoft.Extensions.Configuration;
 
 namespace ConfTool.Client.Services
 {
-    public class CountriesService
+    public class CountriesServiceClient
     {
         private IConfiguration _config;
         private HttpClient _anonHttpClient;
         private string _baseUrl;
         private string _countriesUrl;
 
-        public CountriesService(IConfiguration config, IHttpClientFactory httpClientFactory)
+        public CountriesServiceClient(IConfiguration config, IHttpClientFactory httpClientFactory)
         {
             _config = config;
             _anonHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI.Anon");

@@ -22,8 +22,8 @@ namespace ConfTool.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddScoped<IConferencesServiceClient, ConferencesServiceGrpc>();
-            builder.Services.AddScoped<CountriesService>();
+            builder.Services.AddScoped<IConferencesServiceClient, ConferencesServiceClientGrpc>();
+            builder.Services.AddScoped<CountriesServiceClient>();
 
             builder.Services.AddOidcAuthentication(options =>
             {

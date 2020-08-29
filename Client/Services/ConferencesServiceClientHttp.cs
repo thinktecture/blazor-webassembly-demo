@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConfTool.Client.Services
 {
-    public class ConferencesServiceHttp : IConferencesServiceClient
+    public class ConferencesServiceClientHttp : IConferencesServiceClient
     {
         private IConfiguration _config;
         private HttpClient _secureHttpClient;
@@ -21,7 +21,7 @@ namespace ConfTool.Client.Services
 
         public event EventHandler ConferenceListChanged;
 
-        public ConferencesServiceHttp(IConfiguration config, IHttpClientFactory httpClientFactory)
+        public ConferencesServiceClientHttp(IConfiguration config, IHttpClientFactory httpClientFactory)
         {
             _config = config;
             _secureHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI");

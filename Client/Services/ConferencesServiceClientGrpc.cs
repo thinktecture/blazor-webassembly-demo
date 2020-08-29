@@ -2,35 +2,43 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using ConfTool.Shared.Contracts;
 using ConfTool.Shared.DTO;
 using Grpc.Core;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using ProtoBuf.Grpc.Client;
 
 namespace ConfTool.Client.Services
 {
-    public class ConferencesServiceGrpc : IConferencesServiceClient
+    public class ConferencesServiceClientGrpc : IConferencesServiceClient
     {
         private IConferencesService _client;
         //private Conference.Conferences.ConferencesClient _client;
+        private HttpClient _anonHttpClient;
 
         private IConfiguration _config;
         private string _baseUrl;
+        private string _statisticsUrl;
         private HubConnection _hubConnection;
 
         public event EventHandler ConferenceListChanged;
 
-        public ConferencesServiceGrpc(IConfiguration config, CallInvoker invoker)
+        public ConferencesServiceClientGrpc(IConfiguration config, GrpcChannel channel, CallInvoker invoker, IHttpClientFactory httpClientFactory)
         {
             _config = config;
             _baseUrl = _config["BackendUrl"];
+            _statisticsUrl = new Uri(new Uri(_baseUrl), "api/statistics/").ToString();
+
+            _anonHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI.Anon");
 
             //_client = new Conference.Conferences.ConferencesClient(channel);
-            //_client = channel.CreateGrpcService<IConferencesService>();
-            _client = GrpcClientFactory.CreateGrpcService<IConferencesService>(invoker);
+            _client = channel.CreateGrpcService<IConferencesService>();
+            //_client = GrpcClientFactory.CreateGrpcService<IConferencesService>(invoker);
         }
 
         public async Task InitAsync()
@@ -57,7 +65,7 @@ namespace ConfTool.Client.Services
 
         public async Task<ConferenceDetails> GetConferenceDetailsAsync(Guid id)
         {
-            var result = await  _client.GetConferenceDetailsAsync(new ConferenceDetailsRequest { ID = id });
+            var result = await _client.GetConferenceDetailsAsync(new ConferenceDetailsRequest { ID = id });
 
             return result;
         }
@@ -71,12 +79,9 @@ namespace ConfTool.Client.Services
 
         public async Task<dynamic> GetStatisticsAsync()
         {
-            /*
-            var result = await _httpClient.GetFromJsonAsync<dynamic>(_statisticsUrl);
+            var result = await _anonHttpClient.GetFromJsonAsync<dynamic>(_statisticsUrl);
 
             return result;
-            */
-            throw new NotImplementedException();
-        }
+         }
     }
 }

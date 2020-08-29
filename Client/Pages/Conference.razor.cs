@@ -25,7 +25,7 @@ namespace ConfTool.Client.Pages
         [Inject]
         private IConferencesServiceClient _conferencesService { get; set; }
         [Inject]
-        private CountriesService _countriesService { get; set; }
+        private CountriesServiceClient _countriesService { get; set; }
 
         private ConferenceDetails _conferenceDetails;
         private List<string> _countries;
