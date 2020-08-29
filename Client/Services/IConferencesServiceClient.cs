@@ -5,7 +5,7 @@ using ConfTool.Shared.DTO;
 
 namespace ConfTool.Client.Services
 {
-    public interface IConferencesService
+    public interface IConferencesServiceClient
     {
         Task InitAsync();
         Task<List<ConferenceOverview>> ListConferencesAsync();

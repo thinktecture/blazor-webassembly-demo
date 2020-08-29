@@ -3,28 +3,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConfTool.Shared.Contracts;
 using ConfTool.Shared.DTO;
-using Grpc.Net.Client;
+using Grpc.Core;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using ProtoBuf.Grpc.Client;
 
 namespace ConfTool.Client.Services
 {
-    public class ConferencesServiceGrpc : IConferencesService
+    public class ConferencesServiceGrpc : IConferencesServiceClient
     {
-        private ConfTool.Shared.Contracts.IConferencesService _client;
+        private IConferencesService _client;
+        //private Conference.Conferences.ConferencesClient _client;
+
         private IConfiguration _config;
         private string _baseUrl;
         private HubConnection _hubConnection;
 
         public event EventHandler ConferenceListChanged;
 
-        public ConferencesServiceGrpc(IConfiguration config, GrpcChannel channel)
+        public ConferencesServiceGrpc(IConfiguration config, CallInvoker invoker)
         {
             _config = config;
             _baseUrl = _config["BackendUrl"];
-            _client = channel.CreateGrpcService<ConfTool.Shared.Contracts.IConferencesService>();
+
+            //_client = new Conference.Conferences.ConferencesClient(channel);
+            //_client = channel.CreateGrpcService<IConferencesService>();
+            _client = GrpcClientFactory.CreateGrpcService<IConferencesService>(invoker);
         }
 
         public async Task InitAsync()

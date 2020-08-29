@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConfTool.Client.Services
 {
-    public class ConferencesServiceHttp : IConferencesService
+    public class ConferencesServiceHttp : IConferencesServiceClient
     {
         private IConfiguration _config;
         private HttpClient _secureHttpClient;

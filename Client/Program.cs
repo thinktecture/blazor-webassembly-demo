@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Blazored.Toast;
 using ConfTool.Client.GrpcClient;
 using ConfTool.Client.Services;
+using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
@@ -22,7 +23,7 @@ namespace ConfTool.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddScoped<IConferencesService, ConferencesServiceHttp>();
+            builder.Services.AddScoped<IConferencesServiceClient, ConferencesServiceGrpc>();
             builder.Services.AddScoped<CountriesService>();
 
             builder.Services.AddOidcAuthentication(options =>
@@ -41,7 +42,7 @@ namespace ConfTool.Client
 
             builder.Services.AddBlazoredToast();
 
-            builder.Services.AddScoped<GrpcChannel>(services =>
+            builder.Services.AddScoped<CallInvoker>(services =>
             {
                 var baseAddressMessageHandler = services.GetRequiredService<BaseAddressAuthorizationMessageHandler>();
                 baseAddressMessageHandler.InnerHandler = new HttpClientHandler();
@@ -49,10 +50,11 @@ namespace ConfTool.Client
 
                 var channel = GrpcChannel.ForAddress(builder.HostEnvironment.BaseAddress, new GrpcChannelOptions { HttpHandler = grpcWebHandler });
 
+                // return channel;
+
                 var invoker = channel.Intercept(new ClientLoggerInterceptor());
-                // ... what to do with invoker here?
-                
-                return channel;
+
+                return invoker;
             });
 
             builder.Services.AddApiAuthorization();

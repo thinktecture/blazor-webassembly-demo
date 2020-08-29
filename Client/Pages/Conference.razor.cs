@@ -23,7 +23,7 @@ namespace ConfTool.Client.Pages
         [Inject]
         private IAlertService _alert { get; set; }
         [Inject]
-        private IConferencesService _conferencesService { get; set; }
+        private IConferencesServiceClient _conferencesService { get; set; }
         [Inject]
         private CountriesService _countriesService { get; set; }
 
