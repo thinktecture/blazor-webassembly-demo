@@ -1,0 +1,50 @@
+﻿@page "/time"
+
+@using Grpc.Core
+@using Grpc.Net.Client
+@using ProtoBuf.Grpc.Client;
+@using ProtoBuf.Grpc;
+@using ConfTool.Shared.Contracts
+
+@inject GrpcChannel Channel
+
+@attribute [Authorize]
+
+<h1>Server Time</h1>
+
+<p>Current time: @currentTimeFromServer</p>
+
+<button class="btn btn-primary" @onclick="StartTime" disabled="@(cts != null)">Start</button>
+<button class="btn btn-primary" @onclick="StopTime" disabled="@(cts == null)">Stop</button>
+
+@code {
+    private DateTime currentTimeFromServer;
+    private CancellationTokenSource cts;
+
+    private async Task StartTime()
+    {
+        var clock = Channel.CreateGrpcService<ITimeService>();
+        cts = new CancellationTokenSource();
+        var options = new CallOptions(cancellationToken: cts.Token);
+
+        Console.WriteLine($"Current local time: {DateTime.UtcNow}");
+
+        try
+        {
+            await foreach (var time in clock.SubscribeAsync(new CallContext(options)))
+            {
+                currentTimeFromServer = time.Time;
+                StateHasChanged();
+                Console.WriteLine($"Time from server: {time.Time}");
+            }
+        }
+        catch (RpcException) { }
+        catch (OperationCanceledException) { }
+    }
+
+    private void StopTime()
+    {
+        cts?.Cancel();
+        cts = null;
+    }
+}

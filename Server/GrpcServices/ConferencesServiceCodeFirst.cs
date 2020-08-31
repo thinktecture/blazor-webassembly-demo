@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace ConfTool.Server.gRPC
+namespace ConfTool.Server.GrpcServices
 {
     public class ConferencesServiceCodeFirst : IConferencesService
     {

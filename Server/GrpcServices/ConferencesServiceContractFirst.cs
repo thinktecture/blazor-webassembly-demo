@@ -8,7 +8,7 @@ using Grpc.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace ConfTool.Server.gRPC
+namespace ConfTool.Server.GrpcServices
 {
     public class ConferencesServiceContractFirst : Conferences.ConferencesBase
     {

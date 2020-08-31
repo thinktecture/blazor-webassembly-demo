@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using AutoMapper;
-using ConfTool.Server.gRPC;
+using ConfTool.Server.GrpcServices;
 using ConfTool.Server.Hubs;
 using ConfTool.Server.Model;
 using Microsoft.AspNetCore.Builder;
@@ -14,7 +14,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ProtoBuf.Grpc.Server;
 using Microsoft.AspNetCore.Authorization;
-using IdentityServer4.AccessTokenValidation;
 using FluentValidation.AspNetCore;
 using ConfTool.Shared.Validation;
 
@@ -97,6 +96,7 @@ namespace ConfTool.Server
             {
                 endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb();
                 endpoints.MapGrpcService<CounterService>().EnableGrpcWeb();
+                endpoints.MapGrpcService<TimeService>().EnableGrpcWeb();
                 endpoints.MapGrpcService<ConferencesServiceCodeFirst>().EnableGrpcWeb();
 
                 endpoints.MapHub<ConferencesHub>("/conferencesHub");

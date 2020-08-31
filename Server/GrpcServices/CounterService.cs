@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Count;
 using Grpc.Core;
 
-namespace ConfTool.Server.gRPC
+namespace ConfTool.Server.GrpcServices
 {
     public class CounterService : Counter.CounterBase
     {
