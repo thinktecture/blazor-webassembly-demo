@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+  
+    <PackageReference Include="LiveSharp" Version="1.5.77" />
+  
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="protobuf-net.Grpc" Version="1.0.123" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="3.1.7" />
