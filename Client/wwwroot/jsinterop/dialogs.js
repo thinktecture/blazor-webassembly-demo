@@ -5,4 +5,4 @@ interopJS.dialogs = {
     alert: message => { window.alert(message); return true; }
 }
 
-window.confToolInterop = interopJS;
+window.interop = interopJS;

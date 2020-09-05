@@ -1,0 +1,50 @@
+﻿@page "/webcam"
+
+@using ConfTool.Client.Services
+
+@inject IJSRuntime JSRuntime
+
+<h1>Webcam</h1>
+
+<div class="camera">
+    <video id="@options.VideoID"
+           style="background-color:lightblue;">
+    </video>
+</div>
+
+<div class="output">
+    <img id="@options.PhotoID"
+         alt="">
+</div>
+
+<div>
+    <button class="btn btn-primary" @onclick="StartVideoAsync">Start video</button>
+    <button class="btn btn-primary" @onclick="TakePictureAsync">Take picture</button>
+</div>
+
+<canvas id="@options.CanvasID">
+</canvas>
+
+@code {
+    private WebcamOptions options = new WebcamOptions()
+    {
+        CanvasID = "canvas",
+        VideoID = "video",
+        PhotoID = "photo"
+    };
+
+    protected override void OnInitialized()
+    {
+        options.Width = 320;
+    }
+
+    public async Task StartVideoAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("interop.webcam.startVideo", options);
+    }
+
+    public async Task TakePictureAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("interop.webcam.takePicture");
+    }
+}

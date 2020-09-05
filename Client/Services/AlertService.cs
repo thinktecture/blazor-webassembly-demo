@@ -15,7 +15,7 @@ namespace ConfTool.Client.Services
 
         public async Task<bool> ConfirmAsync(string message)
         {
-            return await _jsRuntime.InvokeAsync<bool>("confToolInterop.dialogs.confirm", message);
+            return await _jsRuntime.InvokeAsync<bool>("interop.dialogs.confirm", message);
         }
 
         public Task AlertAsync(string message)
