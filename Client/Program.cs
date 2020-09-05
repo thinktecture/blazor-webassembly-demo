@@ -38,7 +38,8 @@ namespace ConfTool.Client
                     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
             builder.Services.AddAlerts();
-
+            builder.Services.AddWebcam();
+            
             builder.Services.AddBlazoredToast();
 
             builder.Services.AddScoped<GrpcChannel>(services =>

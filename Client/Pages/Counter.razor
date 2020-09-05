@@ -4,7 +4,7 @@
 @using Grpc.Net.Client
 @using Count
 
-@inject GrpcChannel Channel
+@inject GrpcChannel _channel
 
 @attribute [Authorize]
 
@@ -23,7 +23,7 @@
     {
         cts = new CancellationTokenSource();
 
-        var client = new Count.Counter.CounterClient(Channel);
+        var client = new Count.Counter.CounterClient(_channel);
         var call = client.StartCounter(new CounterRequest() { Start = currentCount }, cancellationToken: cts.Token);
 
         try

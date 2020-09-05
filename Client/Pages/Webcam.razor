@@ -2,7 +2,7 @@
 
 @using ConfTool.Client.Services
 
-@inject IJSRuntime JSRuntime
+@inject IWebcamService _webcam
 
 <h1>Webcam</h1>
 
@@ -40,11 +40,11 @@
 
     public async Task StartVideoAsync()
     {
-        await JSRuntime.InvokeVoidAsync("interop.webcam.startVideo", options);
+        await _webcam.StartVideoAsync(options);
     }
 
     public async Task TakePictureAsync()
     {
-        await JSRuntime.InvokeVoidAsync("interop.webcam.takePicture");
+        await _webcam.TakePictureAsync();
     }
 }
