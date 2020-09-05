@@ -19,7 +19,7 @@ namespace ConfTool.Server.GrpcServices
             {
                 try
                 {
-                    await Task.Delay(TimeSpan.FromSeconds(10), cancel);
+                    await Task.Delay(TimeSpan.FromSeconds(1), cancel);
                 }
                 catch (OperationCanceledException)
                 {
