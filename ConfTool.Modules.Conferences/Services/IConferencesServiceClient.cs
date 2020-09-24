@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ConfTool.Shared.DTO;
 
-namespace ConfTool.Client.Services
+namespace ConfTool.Modules.Conferences.Services
 {
     public interface IConferencesServiceClient
     {

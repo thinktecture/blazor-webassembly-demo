@@ -12,6 +12,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.Tools", "Tools\Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.Tests", "Tests\ConfTool.Tests.csproj", "{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Modules.Conferences", "ConfTool.Modules.Conferences\ConfTool.Modules.Conferences.csproj", "{3EFBE954-D570-46D9-9AFA-7BEA9F080868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Modules.Statistics", "ConfTool.Modules.Statistics\ConfTool.Modules.Statistics.csproj", "{09C9A5AC-6612-4E3E-95C0-F8792814A18F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F8D3C41-8EE3-4984-8D31-48441F1EBC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EFBE954-D570-46D9-9AFA-7BEA9F080868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EFBE954-D570-46D9-9AFA-7BEA9F080868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EFBE954-D570-46D9-9AFA-7BEA9F080868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EFBE954-D570-46D9-9AFA-7BEA9F080868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C9A5AC-6612-4E3E-95C0-F8792814A18F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C9A5AC-6612-4E3E-95C0-F8792814A18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C9A5AC-6612-4E3E-95C0-F8792814A18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C9A5AC-6612-4E3E-95C0-F8792814A18F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

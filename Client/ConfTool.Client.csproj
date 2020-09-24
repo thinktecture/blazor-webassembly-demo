@@ -34,6 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ConfTool.Modules.Conferences\ConfTool.Modules.Conferences.csproj" />
+    <ProjectReference Include="..\ConfTool.Modules.Statistics\ConfTool.Modules.Statistics.csproj" />
     <ProjectReference Include="..\Shared\ConfTool.Shared.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿namespace ConfTool.Client.Components
+﻿namespace ConfTool.Modules.Conferences.Components
 {
     public class ConferenceComponentDisplayModes
     {
