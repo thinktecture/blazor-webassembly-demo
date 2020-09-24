@@ -21,7 +21,7 @@ namespace ConfTool.Client.Pages
         private bool _isShow { get; set; }
 
         [Inject]
-        private IAlertService _alert { get; set; }
+        private IDialogService _alert { get; set; }
         [Inject]
         private IConferencesServiceClient _conferencesService { get; set; }
         [Inject]

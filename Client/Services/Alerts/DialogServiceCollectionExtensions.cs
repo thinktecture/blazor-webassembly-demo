@@ -6,7 +6,7 @@ namespace ConfTool.Client.Services
     {
         public static IServiceCollection AddAlerts(this IServiceCollection services)
         {
-            services.AddSingleton<IAlertService, AlertService>();
+            services.AddSingleton<IDialogService, DialogService>();
 
             return services;
         }

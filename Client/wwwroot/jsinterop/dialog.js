@@ -1,8 +1,6 @@
-﻿var interopJS = interopJS || {}
-
-interopJS.dialogs = {
+﻿dialog = {
     confirm: message => window.confirm(message),
     alert: message => { window.alert(message); return true; }
 }
 
-window.interop = interopJS;
+export dialog;
