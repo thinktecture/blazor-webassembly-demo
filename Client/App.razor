@@ -1,5 +1,7 @@
 <CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(Program).Assembly">
+    <Router AppAssembly="@typeof(Program).Assembly" 
+            AdditionalAssemblies="new[] { typeof(ConfTool.Modules.Conferences.Pages.Conferences).Assembly,
+                                  typeof(ConfTool.Modules.Statistics.Pages.Statistics).Assembly }">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
