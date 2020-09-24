@@ -28,9 +28,4 @@
     <ProjectReference Include="..\Shared\ConfTool.Shared.csproj" />   
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Hubs\" />
-    <Folder Include="Model\" />
-    <Folder Include="Controllers\" />
-  </ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
-﻿dialog = {
-    confirm: message => window.confirm(message),
-    alert: message => { window.alert(message); return true; }
+﻿export function confirm(message) {
+    window.confirm(message);
 }
 
-export dialog;
+export function alert(message) {
+    window.alert(message);
+    return true;
+}
