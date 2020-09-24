@@ -1,11 +1,16 @@
 ﻿using Microsoft.JSInterop;
+using Nito.AsyncEx;
 using System.Threading.Tasks;
 
 namespace ConfTool.Client.Services
 {
     public class WebcamService : IWebcamService
     {
-        private IJSRuntime _jsRuntime { get; }
+        private static IJSRuntime _jsRuntime;
+        private static AsyncLazy<JSObjectReference> _module = new AsyncLazy<JSObjectReference>(async () =>
+        {
+            return await _jsRuntime.InvokeAsync<JSObjectReference>("import", "./jsinterop/webcam.js");
+        });
 
         public WebcamService(IJSRuntime jsRuntime)
         {
@@ -14,12 +19,12 @@ namespace ConfTool.Client.Services
 
         public async Task StartVideoAsync(WebcamOptions options)
         {
-            await _jsRuntime.InvokeVoidAsync("interop.webcam.startVideo", options);
+            await (await _module).InvokeVoidAsync("startVideo", options);
         }
 
         public async Task TakePictureAsync()
         {
-            await _jsRuntime.InvokeVoidAsync("interop.webcam.takePicture");
+            await (await _module).InvokeVoidAsync("takePicture");
         }
     }
 }

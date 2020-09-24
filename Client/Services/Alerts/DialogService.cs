@@ -1,6 +1,5 @@
 ﻿using Microsoft.JSInterop;
 using Nito.AsyncEx;
-using System;
 using System.Threading.Tasks;
 
 namespace ConfTool.Client.Services
@@ -20,14 +19,12 @@ namespace ConfTool.Client.Services
 
         public async Task<bool> ConfirmAsync(string message)
         {
-            var module = await _module;
-
-            return await module.InvokeAsync<bool>("confirm", message);
+            return await (await _module).InvokeAsync<bool>("confirm", message);
         }
 
-        public Task AlertAsync(string message)
+        public async Task AlertAsync(string message)
         {
-            throw new NotImplementedException();
+            await (await _module).InvokeVoidAsync("alert", message);
         }
     }
 }

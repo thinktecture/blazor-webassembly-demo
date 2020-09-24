@@ -11,7 +11,7 @@ let streaming = false;
 let width = 100;    // We will scale the photo width to this
 let height = 0;     // This will be computed based on the input stream
 
-function startVideo(options) {
+export function startVideo(options) {
     video = document.getElementById(options.videoID);
     canvas = document.getElementById(options.canvasID);
     photo = document.getElementById(options.photoID);
@@ -47,7 +47,7 @@ function startVideo(options) {
     clearPicture();
 }
 
-function clearPicture() {
+export function clearPicture() {
     var context = canvas.getContext('2d');
     context.fillStyle = "#FFF";
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -56,7 +56,7 @@ function clearPicture() {
     photo.setAttribute('src', data);
 }
 
-function takePicture() {
+export function takePicture() {
     var context = canvas.getContext('2d');
 
     if (width && height) {
@@ -71,11 +71,3 @@ function takePicture() {
         clearPicture();
     }
 }
-
-interopJS.webcam = {
-    startVideo: (options) => { startVideo(options); },
-    takePicture: () => { takePicture(); },
-    clearPicture: () => { clearPicture(); },
-};
-
-window.interop = interopJS;

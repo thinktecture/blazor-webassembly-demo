@@ -37,5 +37,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Shared\ConfTool.Shared.csproj" />
   </ItemGroup>
-    
+
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>kill-port 9300</PreBuildEvent>
+  </PropertyGroup>
 </Project>
