@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ConfTool.Client.Pages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConfTool.Server.Model
@@ -78,6 +80,26 @@ namespace ConfTool.Server.Model
                         DateTo = new DateTime(2020, 10, 1),
                         Url = "https://javascript-conference.com/new-york/"
                     });
+
+                var moreConfs = new List<Conference>();
+
+                for (int i = 0; i < 300; i++)
+                {
+                    var conf = new Conference
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "Conf "+ i,
+                        City = "City " + i,
+                        Country = "Germany",
+                        DateFrom = new DateTime(2020, 9, 28),
+                        DateTo = new DateTime(2020, 10, 1),
+                        Url = "https://someconf.com"
+                    };
+
+                    moreConfs.Add(conf);
+                }
+
+                context.Conferences.AddRange(moreConfs);
 
                 context.SaveChanges();
             }

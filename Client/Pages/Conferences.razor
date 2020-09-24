@@ -2,7 +2,8 @@
 
 @using ConfTool.Client.Services
 @using ConfTool.Shared.DTO
-
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+ 
 @attribute [Authorize]
 
 @implements IDisposable
@@ -30,17 +31,16 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var conf in _conferences)
-            {
+            <Virtualize Items="@_conferences" Context="conf">
                 <tr @onclick="() => LoadDetails(conf.ID)">
                     <td>@conf.Title</td>
                 </tr>
-            }
+            </Virtualize>
         </tbody>
     </table>
 }
 @code {
-    private IEnumerable<ConferenceOverview> _conferences;
+    public List<ConferenceOverview> _conferences;
 
     protected override async Task OnInitializedAsync()
     {
@@ -61,7 +61,7 @@ else
         StateHasChanged();
     }
 
-    private async Task<IEnumerable<ConferenceOverview>> ListConferences()
+    private async Task<List<ConferenceOverview>> ListConferences()
     {
         return await _conferencesService.ListConferencesAsync();
     }
