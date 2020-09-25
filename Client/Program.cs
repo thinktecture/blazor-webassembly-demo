@@ -14,7 +14,7 @@ namespace ConfTool.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddConferencesModule();
+            builder.Services.AddConferencesModule(builder.Configuration);
 
             builder.Services.AddWebcam();
 

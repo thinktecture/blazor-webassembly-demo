@@ -15,18 +15,16 @@ namespace ConfTool.Modules.Conferences
 {
     public static class ConferencesModuleServiceCollectionExtensions
     {
-        public static IServiceCollection AddConferencesModule(this IServiceCollection services)
+        public static IServiceCollection AddConferencesModule(this IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<IConferencesServiceClient, ConferencesServiceClientGrpc>();
             services.AddScoped<CountriesServiceClient>();
 
-            var config = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-
             services.AddHttpClient("ConfTool.ServerAPI.Anon", client =>
-                client.BaseAddress = new Uri(config["BaseApiUrl"]));
+                client.BaseAddress = new Uri(config["BackendUrl"]));
 
             services.AddHttpClient("ConfTool.ServerAPI", client =>
-                client.BaseAddress = new Uri(config["BaseApiUrl"]))
+                client.BaseAddress = new Uri(config["BackendUrl"]))
                     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
             services.AddDialog();
@@ -58,7 +56,7 @@ namespace ConfTool.Modules.Conferences
             var grpcWebHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, baseAddressMessageHandler);
 
             var config = services.GetRequiredService<IConfiguration>();
-            var channel = GrpcChannel.ForAddress(config["BaseApiUrl"], new GrpcChannelOptions { HttpHandler = grpcWebHandler });
+            var channel = GrpcChannel.ForAddress(config["BackendUrl"], new GrpcChannelOptions { HttpHandler = grpcWebHandler });
 
             return channel;
         }
