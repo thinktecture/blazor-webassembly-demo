@@ -18,7 +18,7 @@ namespace ConfTool.Modules.Conferences.Services
         {
             _config = config;
             _anonHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI.Anon");
-            _baseUrl = _config["BackendUrl"];
+            _baseUrl = _config[Configuration.BackendUrlKey];
             _countriesUrl = new Uri(new Uri(_baseUrl), "api/countries/").ToString();
         }
 

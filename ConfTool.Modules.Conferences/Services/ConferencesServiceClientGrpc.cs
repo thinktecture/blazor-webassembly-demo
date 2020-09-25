@@ -30,10 +30,10 @@ namespace ConfTool.Modules.Conferences.Services
         public ConferencesServiceClientGrpc(IConfiguration config, GrpcChannel channel, CallInvoker invoker, IHttpClientFactory httpClientFactory)
         {
             _config = config;
-            _baseUrl = _config["BackendUrl"];
+            _baseUrl = _config[Configuration.BackendUrlKey];
             _statisticsUrl = new Uri(new Uri(_baseUrl), "api/statistics/").ToString();
 
-            _anonHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI.Anon");
+            _anonHttpClient = httpClientFactory.CreateClient("Conferences.ServerAPI.Anon");
 
             //_client = new Conference.Conferences.ConferencesClient(channel);
             _client = channel.CreateGrpcService<IConferencesService>();

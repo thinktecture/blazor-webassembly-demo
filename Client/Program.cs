@@ -1,6 +1,14 @@
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using ConfTool.Client.Services;
 using ConfTool.Modules.Conferences;
+using ConfTool.Modules.Conferences.GrpcClient;
+using Grpc.Core;
+using Grpc.Core.Interceptors;
+using Grpc.Net.Client;
+using Grpc.Net.Client.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +26,21 @@ namespace ConfTool.Client
 
             builder.Services.AddWebcam();
 
+            builder.Services.AddScoped<GrpcChannel>(services =>
+            {
+                var channel = BuildGrpcChannel(services, builder);
+
+                return channel;
+            });
+
+            builder.Services.AddScoped<CallInvoker>(services =>
+            {
+                var channel = BuildGrpcChannel(services, builder);
+                var invoker = channel.Intercept(new ClientLoggerInterceptor());
+
+                return invoker;
+            });
+
             builder.Services.AddOidcAuthentication(options =>
             {
                 builder.Configuration.Bind("Oidc", options.ProviderOptions);
@@ -26,6 +49,17 @@ namespace ConfTool.Client
             builder.Services.AddApiAuthorization();
 
             await builder.Build().RunAsync();
+        }
+
+        private static GrpcChannel BuildGrpcChannel(IServiceProvider services, WebAssemblyHostBuilder builder)
+        {
+            var baseAddressMessageHandler = services.GetRequiredService<BaseAddressAuthorizationMessageHandler>();
+            baseAddressMessageHandler.InnerHandler = new HttpClientHandler();
+            var grpcWebHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, baseAddressMessageHandler);
+
+            var channel = GrpcChannel.ForAddress(builder.Configuration[Configuration.BackendUrlKey], new GrpcChannelOptions { HttpHandler = grpcWebHandler });
+
+            return channel;
         }
     }
 }

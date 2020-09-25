@@ -24,9 +24,9 @@ namespace ConfTool.Modules.Conferences.Services
         public ConferencesServiceClientHttp(IConfiguration config, IHttpClientFactory httpClientFactory)
         {
             _config = config;
-            _secureHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI");
-            _anonHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI.Anon");
-            _baseUrl = _config["BackendUrl"];
+            _secureHttpClient = httpClientFactory.CreateClient("Conferences.ServerAPI");
+            _anonHttpClient = httpClientFactory.CreateClient("Conferences.ServerAPI.Anon");
+            _baseUrl = _config[Configuration.BackendUrlKey];
             _conferencesUrl = new Uri(new Uri(_baseUrl), "api/conferences/").ToString();
             _statisticsUrl = new Uri(new Uri(_baseUrl), "api/statistics/").ToString();
         }
