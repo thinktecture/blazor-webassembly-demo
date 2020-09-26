@@ -1,9 +1,9 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ConfTool.Client.Services;
+using ConfTool.Client.Infrastructure;
+using ConfTool.Client.Webcam;
 using ConfTool.Modules.Conferences;
-using ConfTool.Modules.Conferences.GrpcClient;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Grpc.Net.Client;

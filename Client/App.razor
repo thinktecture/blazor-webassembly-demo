@@ -1,5 +1,11 @@
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Routing
+
+@using ConfTool.Client.Authentication
+@using ConfTool.Client.Common
+
 <CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(Program).Assembly" 
+    <Router AppAssembly="@typeof(Program).Assembly"
             AdditionalAssemblies="new[] { typeof(ConfTool.Modules.Conferences.Pages.Conferences).Assembly,
                                   typeof(ConfTool.Modules.Statistics.Pages.Statistics).Assembly }">
         <Found Context="routeData">

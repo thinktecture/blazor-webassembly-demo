@@ -1,4 +1,4 @@
-﻿namespace ConfTool.Client
+﻿namespace ConfTool.Client.Infrastructure
 {
     internal class Configuration
     {

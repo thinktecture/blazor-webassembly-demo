@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 
-namespace ConfTool.Modules.Conferences.GrpcClient
+namespace ConfTool.Client.Infrastructure
 {
     public class ClientLoggerInterceptor : Interceptor
     {

@@ -1,5 +1,5 @@
 using Bunit;
-using ConfTool.Client.Components;
+using ConfTool.Client.Common;
 using Xunit;
 
 namespace ConfTool.Tests

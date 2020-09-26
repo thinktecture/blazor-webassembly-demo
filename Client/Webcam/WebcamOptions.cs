@@ -1,4 +1,4 @@
-﻿namespace ConfTool.Client.Services
+﻿namespace ConfTool.Client.Webcam
 {
     public class WebcamOptions
     {

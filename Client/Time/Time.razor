@@ -2,8 +2,10 @@
 
 @using Grpc.Core
 @using Grpc.Net.Client
+@using Microsoft.AspNetCore.Authorization
 @using ProtoBuf.Grpc.Client;
 @using ProtoBuf.Grpc;
+@using System.Threading
 @using ConfTool.Shared.Contracts
 
 @inject GrpcChannel _channel
