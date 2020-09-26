@@ -1,30 +1,38 @@
 ﻿using Microsoft.JSInterop;
-using Nito.AsyncEx;
+using System;
 using System.Threading.Tasks;
 
 namespace ConfTool.Modules.Conferences.Services
 {
-    public class DialogService : IDialogService
+    public class DialogService : IDialogService, IAsyncDisposable
     {
-        private static IJSRuntime _jsRuntime;
-        private static AsyncLazy<JSObjectReference> _module = new AsyncLazy<JSObjectReference>(async () =>
-        {
-            return await _jsRuntime.InvokeAsync<JSObjectReference>("import", "./_content/ConfTool.Modules.Conferences/jsinterop/dialog.js");
-        });
+        private readonly Lazy<Task<JSObjectReference>> _moduleTask;
 
         public DialogService(IJSRuntime jsRuntime)
         {
-            _jsRuntime = jsRuntime;
+            _moduleTask = new(() => jsRuntime.InvokeAsync<JSObjectReference>(
+               "import", "./_content/ConfTool.Modules.Conferences/jsinterop/dialog.js").AsTask());
         }
 
         public async Task<bool> ConfirmAsync(string message)
         {
-            return await (await _module).InvokeAsync<bool>("confirm", message);
+            var module = await _moduleTask.Value;
+            return await module.InvokeAsync<bool>("confirm", message);
         }
 
         public async Task AlertAsync(string message)
         {
-            await (await _module).InvokeVoidAsync("alert", message);
+            var module = await _moduleTask.Value;
+            await module.InvokeVoidAsync("alert", message);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if (_moduleTask.IsValueCreated)
+            {
+                var module = await _moduleTask.Value;
+                await module.DisposeAsync();
+            }
         }
     }
 }

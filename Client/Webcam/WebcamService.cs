@@ -1,30 +1,38 @@
 ﻿using Microsoft.JSInterop;
-using Nito.AsyncEx;
+using System;
 using System.Threading.Tasks;
 
 namespace ConfTool.Client.Webcam
 {
-    public class WebcamService : IWebcamService
+    public class WebcamService : IWebcamService, IAsyncDisposable
     {
-        private static IJSRuntime _jsRuntime;
-        private static AsyncLazy<JSObjectReference> _module = new AsyncLazy<JSObjectReference>(async () =>
-        {
-            return await _jsRuntime.InvokeAsync<JSObjectReference>("import", "./jsinterop/webcam.js");
-        });
+        private readonly Lazy<Task<JSObjectReference>> _moduleTask;
 
         public WebcamService(IJSRuntime jsRuntime)
         {
-            _jsRuntime = jsRuntime;
+            _moduleTask = new(() => jsRuntime.InvokeAsync<JSObjectReference>(
+               "import", "./jsinterop/webcam.js").AsTask());
         }
 
         public async Task StartVideoAsync(WebcamOptions options)
         {
-            await (await _module).InvokeVoidAsync("startVideo", options);
+            var module = await _moduleTask.Value;
+            await module.InvokeVoidAsync("startVideo", options);
         }
 
         public async Task TakePictureAsync()
         {
-            await (await _module).InvokeVoidAsync("takePicture");
+            var module = await _moduleTask.Value;
+            await module.InvokeVoidAsync("takePicture");
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if (_moduleTask.IsValueCreated)
+            {
+                var module = await _moduleTask.Value;
+                await module.DisposeAsync();
+            }
         }
     }
 }

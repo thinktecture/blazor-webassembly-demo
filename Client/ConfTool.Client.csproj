@@ -30,7 +30,6 @@
     <PackageReference Include="Blazored.Toast" Version="3.1.2" />
     <PackageReference Include="Blazored.Typeahead" Version="4.4.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
-    <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
