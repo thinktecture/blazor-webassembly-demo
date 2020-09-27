@@ -1,11 +1,11 @@
 ﻿using System;
 using Blazored.Toast;
-using ConfTool.Modules.Conferences.Services;
+using ConfTool.ClientModules.Conferences.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ConfTool.Modules.Conferences
+namespace ConfTool.ClientModules.Conferences
 {
     public static class ConferencesModuleServiceCollectionExtensions
     {
@@ -13,9 +13,6 @@ namespace ConfTool.Modules.Conferences
         {
             services.AddScoped<IConferencesServiceClient, ConferencesServiceClientGrpc>();
             services.AddScoped<CountriesServiceClient>();
-
-            services.AddHttpClient("Conferences.ServerAPI.Anon", client =>
-                client.BaseAddress = new Uri(config[Configuration.BackendUrlKey]));
 
             services.AddHttpClient("Conferences.ServerAPI", client =>
                 client.BaseAddress = new Uri(config[Configuration.BackendUrlKey]))

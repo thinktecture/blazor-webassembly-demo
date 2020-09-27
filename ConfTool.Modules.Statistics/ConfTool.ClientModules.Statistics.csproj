@@ -13,12 +13,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0-rc.1.20451.17" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\ConfTool.Modules.Conferences\ConfTool.ClientModules.Conferences.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0-rc.1.*" />
   </ItemGroup>
 
 </Project>

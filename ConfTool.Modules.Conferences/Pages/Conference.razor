@@ -1,9 +1,16 @@
 ﻿@page "/conferences/{mode}"
 @page "/conferences/{mode}/{id:guid}"
 
+@using Microsoft.AspNetCore.Components.Forms
+
+@using Blazored.FluentValidation
+@using Blazored.Typeahead
+
+@using ConfTool.ClientModules.Conferences.Components
+
 <ConferenceHeader Mode="@Mode" />
 
-<EditForm Model="_conferenceDetails" OnValidSubmit="SaveConference" OnInvalidSubmit="Debug">
+<EditForm Model="_conferenceDetails" OnValidSubmit="SaveConference">
     <DataAnnotationsValidator />
     <FluentValidationValidator />
 
@@ -59,10 +66,3 @@
         <button type="submit" class="btn btn-primary">Save</button>
     }
 </EditForm>
-
-@code {
-    private void Debug()
-    {
-        Console.WriteLine("### DEBUG: INVALID FORM!");
-    }
-}

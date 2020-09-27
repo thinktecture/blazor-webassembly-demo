@@ -1,4 +1,4 @@
-﻿namespace ConfTool.Modules.Conferences
+﻿namespace ConfTool.ClientModules.Conferences
 {
     internal class Configuration
     {

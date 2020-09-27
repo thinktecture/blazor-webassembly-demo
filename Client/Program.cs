@@ -3,7 +3,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using ConfTool.Client.Infrastructure;
 using ConfTool.Client.Webcam;
-using ConfTool.Modules.Conferences;
+using ConfTool.ClientModules.Conferences;
+using ConfTool.ClientModules.Statistics;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Grpc.Net.Client;
@@ -23,6 +24,7 @@ namespace ConfTool.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddConferencesModule(builder.Configuration);
+            builder.Services.AddStatisticsModule(builder.Configuration);
 
             builder.Services.AddWebcam();
 

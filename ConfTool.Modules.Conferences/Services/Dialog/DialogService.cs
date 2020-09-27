@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace ConfTool.Modules.Conferences.Services
+namespace ConfTool.ClientModules.Conferences.Services
 {
     public class DialogService : IDialogService, IAsyncDisposable
     {
@@ -11,7 +11,7 @@ namespace ConfTool.Modules.Conferences.Services
         public DialogService(IJSRuntime jsRuntime)
         {
             _moduleTask = new(() => jsRuntime.InvokeAsync<JSObjectReference>(
-               "import", "./_content/ConfTool.Modules.Conferences/jsinterop/dialog.js").AsTask());
+               "import", "./_content/ConfTool.ClientModules.Conferences/jsinterop/dialog.js").AsTask());
         }
 
         public async Task<bool> ConfirmAsync(string message)

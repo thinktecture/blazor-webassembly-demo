@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ConfTool.Shared.DTO;
 
-namespace ConfTool.Modules.Conferences.Services
+namespace ConfTool.ClientModules.Conferences.Services
 {
     public interface IConferencesServiceClient
     {
@@ -11,7 +11,6 @@ namespace ConfTool.Modules.Conferences.Services
         Task<List<ConferenceOverview>> ListConferencesAsync();
         Task<ConferenceDetails> AddConferenceAsync(ConferenceDetails conference);
         Task<ConferenceDetails> GetConferenceDetailsAsync(Guid id);
-        Task<dynamic> GetStatisticsAsync();
 
         event EventHandler ConferenceListChanged;
     }

@@ -1,12 +1,13 @@
 ﻿@page "/statistics"
 
+@using Microsoft.JSInterop
 @using System.Text.Json
-@using ConfTool.Modules.Conferences.Services
+@using ConfTool.ClientModules.Statistics.Services
 
 @implements IDisposable
 
 @inject IJSRuntime _js
-@inject IConferencesServiceClient _conferencesService
+@inject StatisticsServiceClient _statisticsService
 
 <h3>Statistics</h3>
 
@@ -32,14 +33,14 @@
 </div>
 
 @code {
-    private string _data; // = @"[{""name"": ""Germany"",""value"": 3},{""name"": ""USA"",""value"": 1},{""name"": ""England"",""value"": 1}]";
+    private string _data;
     private string _selectedCountry;
 
     private DotNetObjectReference<Statistics> _objectReference;
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await _conferencesService.GetStatisticsAsync();
+        var result = await _statisticsService.GetStatisticsAsync();
         _data = JsonSerializer.Serialize(result);
     }
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace ConfTool.Modules.Conferences.Services
+namespace ConfTool.ClientModules.Conferences.Services
 {
     public static class AlertServiceCollectionExtensions
     {

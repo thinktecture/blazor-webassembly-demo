@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using ConfTool.Shared.Contracts;
 using ConfTool.Shared.DTO;
@@ -12,28 +10,23 @@ using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using ProtoBuf.Grpc.Client;
 
-namespace ConfTool.Modules.Conferences.Services
+namespace ConfTool.ClientModules.Conferences.Services
 {
     public class ConferencesServiceClientGrpc : IConferencesServiceClient
     {
         private IConferencesService _client;
         //private Conference.Conferences.ConferencesClient _client;
-        private HttpClient _anonHttpClient;
 
         private IConfiguration _config;
         private string _baseUrl;
-        private string _statisticsUrl;
         private HubConnection _hubConnection;
 
         public event EventHandler ConferenceListChanged;
 
-        public ConferencesServiceClientGrpc(IConfiguration config, GrpcChannel channel, CallInvoker invoker, IHttpClientFactory httpClientFactory)
+        public ConferencesServiceClientGrpc(IConfiguration config, GrpcChannel channel, CallInvoker invoker)
         {
             _config = config;
             _baseUrl = _config[Configuration.BackendUrlKey];
-            _statisticsUrl = new Uri(new Uri(_baseUrl), "api/statistics/").ToString();
-
-            _anonHttpClient = httpClientFactory.CreateClient("Conferences.ServerAPI.Anon");
 
             //_client = new Conference.Conferences.ConferencesClient(channel);
             _client = channel.CreateGrpcService<IConferencesService>();
@@ -75,12 +68,5 @@ namespace ConfTool.Modules.Conferences.Services
 
             return result;
         }
-
-        public async Task<dynamic> GetStatisticsAsync()
-        {
-            var result = await _anonHttpClient.GetFromJsonAsync<dynamic>(_statisticsUrl);
-
-            return result;
-         }
     }
 }

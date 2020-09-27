@@ -1,5 +1,5 @@
-﻿using ConfTool.Modules.Conferences.Components;
-using ConfTool.Modules.Conferences.Services;
+﻿using ConfTool.ClientModules.Conferences.Components;
+using ConfTool.ClientModules.Conferences.Services;
 using ConfTool.Shared.DTO;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ConfTool.Modules.Conferences.Pages
+namespace ConfTool.ClientModules.Conferences.Pages
 {
     public partial class Conference : ComponentBase
     {

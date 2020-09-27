@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 
-namespace ConfTool.Modules.Conferences.Services
+namespace ConfTool.ClientModules.Conferences.Services
 {
     public class CountriesServiceClient
     {

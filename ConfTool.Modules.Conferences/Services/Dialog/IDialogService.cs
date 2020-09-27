@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ConfTool.Modules.Conferences.Services
+namespace ConfTool.ClientModules.Conferences.Services
 {
     public interface IDialogService
     {

@@ -1,13 +1,17 @@
 ﻿@page "/conferences"
 
-@using ConfTool.Modules.Conferences.Services
-@using ConfTool.Shared.DTO
 @using Microsoft.AspNetCore.Components.Web.Virtualization
- 
+@using Microsoft.AspNetCore.Authorization
+
+@using Blazored.Toast.Services
+
+@using ConfTool.ClientModules.Conferences.Services
+@using ConfTool.Shared.DTO
+
 @attribute [Authorize]
 
 @implements IDisposable
- 
+
 @inject NavigationManager _navigation
 @inject IConferencesServiceClient _conferencesService
 @inject IToastService _toastService
