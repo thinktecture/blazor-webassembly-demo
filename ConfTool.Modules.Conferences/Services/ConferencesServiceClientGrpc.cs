@@ -8,6 +8,7 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using ProtoBuf.Grpc.Client;
 
 namespace ConfTool.ClientModules.Conferences.Services
@@ -38,6 +39,7 @@ namespace ConfTool.ClientModules.Conferences.Services
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl(new Uri(new Uri(_baseUrl), "conferencesHub"))
                 .WithAutomaticReconnect()
+                .AddMessagePackProtocol()
                 .Build();
 
             _hubConnection.On("NewConferenceAdded", () =>
