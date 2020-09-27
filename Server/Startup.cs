@@ -41,7 +41,8 @@ namespace ConfTool.Server
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    Configuration.Bind("Oidc");
+                    Configuration.Bind("Oidc", options);
+                    options.RefreshOnIssuerKeyNotFound = true;
                 });
 
             services.AddAuthorization(config =>
