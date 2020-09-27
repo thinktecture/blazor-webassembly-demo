@@ -11,7 +11,7 @@ namespace ConfTool.ClientModules.Conferences
     {
         public static IServiceCollection AddConferencesModule(this IServiceCollection services, IConfiguration config)
         {
-            services.AddScoped<IConferencesServiceClient, ConferencesServiceClientGrpc>();
+            services.AddScoped<IConferencesServiceClient, ConferencesServiceClientHttp>();
             services.AddScoped<CountriesServiceClient>();
 
             services.AddHttpClient("Conferences.ServerAPI", client =>
