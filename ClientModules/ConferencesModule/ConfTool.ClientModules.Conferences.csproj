@@ -26,7 +26,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\ConfTool.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\ConfTool.Shared.csproj" />
   </ItemGroup>
 
 </Project>
