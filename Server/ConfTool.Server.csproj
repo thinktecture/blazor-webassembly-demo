@@ -16,8 +16,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.0-rc.2.20474.6" />
-    <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
-    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.31.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.32.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0-rc.2.20474.6" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
