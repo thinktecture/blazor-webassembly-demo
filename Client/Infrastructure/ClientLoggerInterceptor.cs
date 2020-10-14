@@ -44,6 +44,7 @@ namespace ConfTool.Client.Infrastructure
             {
                 var response = await t;
                 Console.WriteLine($"Response received: {response}");
+
                 return response;
             }
             catch (Exception ex)
@@ -51,10 +52,7 @@ namespace ConfTool.Client.Infrastructure
                 // Log error to the console.
                 // Note: Configuring .NET Core logging is the recommended way to log errors
                 // https://docs.microsoft.com/aspnet/core/grpc/diagnostics#grpc-client-logging
-                var initialColor = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Call error: {ex.Message}");
-                Console.ForegroundColor = initialColor;
 
                 throw;
             }
@@ -95,10 +93,7 @@ namespace ConfTool.Client.Infrastructure
             where TRequest : class
             where TResponse : class
         {
-            var initialColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Starting call. Type: {method.Type}. Request: {typeof(TRequest)}. Response: {typeof(TResponse)}");
-            Console.ForegroundColor = initialColor;
         }
 
         private void AddCallerMetadata<TRequest, TResponse>(ref ClientInterceptorContext<TRequest, TResponse> context)

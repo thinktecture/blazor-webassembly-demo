@@ -1,5 +1,4 @@
 ﻿using Microsoft.JSInterop;
-using Microsoft.JSInterop.Implementation;
 using System;
 using System.Threading.Tasks;
 
@@ -7,11 +6,11 @@ namespace ConfTool.ClientModules.Conferences.Services
 {
     public class DialogService : IDialogService, IAsyncDisposable
     {
-        private readonly Lazy<Task<JSObjectReference>> _moduleTask;
+        private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
         public DialogService(IJSRuntime jsRuntime)
         {
-            _moduleTask = new(() => jsRuntime.InvokeAsync<JSObjectReference>(
+            _moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
                "import", "./_content/ConfTool.ClientModules.Conferences/jsinterop/dialog.js").AsTask());
         }
 
