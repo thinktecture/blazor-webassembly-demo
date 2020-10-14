@@ -6,12 +6,14 @@ using ConfTool.Server.Hubs;
 using ConfTool.Server.Model;
 using ConfTool.Shared.Contracts;
 using ConfTool.Shared.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace ConfTool.Server.GrpcServices
 {
+    [Authorize]
     public class ConferencesServiceCodeFirst : IConferencesService
     {
         private readonly ILogger<ConferencesServiceCodeFirst> _logger;
