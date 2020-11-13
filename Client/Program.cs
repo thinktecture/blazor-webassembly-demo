@@ -21,7 +21,8 @@ namespace ConfTool.Client
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("#app");
+            // Not needed for pre-rendering
+            // builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddConferencesModule(builder.Configuration);
             builder.Services.AddStatisticsModule(builder.Configuration);

@@ -9,7 +9,9 @@
     <DefineConstants>TRACE;LIVESHARP_DISABLE</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'ConfTool' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'ConfTool' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LiveSharp" Version="1.6.22" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
