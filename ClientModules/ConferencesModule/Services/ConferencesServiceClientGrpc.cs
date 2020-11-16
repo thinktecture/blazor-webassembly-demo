@@ -31,7 +31,7 @@ namespace ConfTool.ClientModules.Conferences.Services
 
             //_client = new Conference.Conferences.ConferencesClient(channel);
             _client = channel.CreateGrpcService<IConferencesService>();
-            //_client = GrpcClientFactory.CreateGrpcService<IConferencesService>(invoker);
+            //_client = invoker.CreateGrpcService<IConferencesService>();
         }
 
         public async Task InitAsync()

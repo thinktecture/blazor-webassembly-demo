@@ -9,11 +9,13 @@
     <DefineConstants>TRACE;LIVESHARP_DISABLE</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'ConfTool' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'ConfTool' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LiveSharp" Version="1.6.22" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="protobuf-net.Grpc" Version="1.0.123" />
+    <PackageReference Include="protobuf-net.Grpc" Version="1.0.136" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
@@ -21,7 +23,7 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.33.1" />
     <PackageReference Include="Grpc.Net.Client.Web" Version="2.33.1" />
-    <PackageReference Include="Google.Protobuf" Version="3.14.0-rc2" />
+    <PackageReference Include="Google.Protobuf" Version="3.14.0" />
     <PackageReference Include="Grpc.Tools" Version="2.33.1">
     <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

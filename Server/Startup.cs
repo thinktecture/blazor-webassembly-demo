@@ -58,6 +58,7 @@ namespace ConfTool.Server
 
             services.AddGrpc();
             services.AddCodeFirstGrpc(config => { config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal; });
+            services.AddCodeFirstGrpcReflection();
 
             services.AddResponseCompression(opts =>
             {
@@ -99,6 +100,8 @@ namespace ConfTool.Server
                 endpoints.MapGrpcService<CounterService>().EnableGrpcWeb();
                 endpoints.MapGrpcService<TimeService>().EnableGrpcWeb();
                 endpoints.MapGrpcService<ConferencesServiceCodeFirst>().EnableGrpcWeb();
+
+                endpoints.MapCodeFirstGrpcReflectionService();
 
                 endpoints.MapHub<ConferencesHub>("/conferencesHub");
 

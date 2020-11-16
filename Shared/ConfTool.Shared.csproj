@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
     
   <ItemGroup>
@@ -9,12 +10,12 @@
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.33.1" />
-    <PackageReference Include="Google.Protobuf" Version="3.14.0-rc2" />
-    <PackageReference Include="Grpc.Tools" Version="2.33.1">
+    <PackageReference Include="Google.Protobuf" Version="3.14.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.32.0">
     <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="protobuf-net.Grpc" Version="1.0.123" />
+    <PackageReference Include="protobuf-net.Grpc" Version="1.0.136" />
   </ItemGroup>
     
   <ItemGroup>

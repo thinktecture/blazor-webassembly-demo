@@ -48,8 +48,6 @@ namespace ConfTool.Client
                 builder.Configuration.Bind("Oidc", options.ProviderOptions);
             });
             
-            builder.Services.AddApiAuthorization();
-
             await builder.Build().RunAsync();
         }
 
