@@ -1,13 +1,23 @@
+@using System.Reflection
+
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.WebAssembly.Services
 
 @using ConfTool.Client.Authentication
 @using ConfTool.Client.Common
 
+@inject LazyAssemblyLoader _assemblyLoader
+
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(Program).Assembly"
-            AdditionalAssemblies="new[] { typeof(ConfTool.ClientModules.Conferences.Pages.Conferences).Assembly,
-                                  typeof(ConfTool.ClientModules.Statistics.Pages.Statistics).Assembly }">
+            AdditionalAssemblies="@_lazyLoadedAssemblies"
+            OnNavigateAsync="@OnNavigateAsync">
+        <Navigating>
+            <div style="padding:20px;background-color:blue;color:white">
+                <p>Loading the requested module&hellip;</p>
+            </div>
+        </Navigating>
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
@@ -29,3 +39,28 @@
         </NotFound>
     </Router>
 </CascadingAuthenticationState>
+
+@code {
+    private List<Assembly> _lazyLoadedAssemblies = new List<Assembly>();
+
+    private async Task OnNavigateAsync(NavigationContext args)
+    {
+        var path = args.Path;
+
+        var assemblyToLoad = path switch
+        {
+            _ when path.EndsWith("/conferences") => "ConfTool.ClientModules.Conferences.dll",
+            _ when path.EndsWith("/statistics") => "ConfTool.ClientModules.Statistics.dll",
+            _ => String.Empty
+        };
+
+
+        if (!String.IsNullOrWhiteSpace(assemblyToLoad))
+        {
+            var assemblies = await _assemblyLoader.LoadAssembliesAsync(
+                new List<string>() { assemblyToLoad });
+
+            _lazyLoadedAssemblies.AddRange(assemblies);
+        }
+    }
+}
