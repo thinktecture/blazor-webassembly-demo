@@ -15,6 +15,7 @@
   
   <ItemGroup>
     <BlazorWebAssemblyLazyLoad Include="ConfTool.ClientModules.Conferences.dll" />
+    <BlazorWebAssemblyLazyLoad Include="ConfTool.ClientModules.Statistics.dll" />
   </ItemGroup>
   
   <ItemGroup>
