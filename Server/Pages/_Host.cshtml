@@ -35,7 +35,7 @@
 <body>
     @if (!HttpContext.Request.Path.StartsWithSegments("/authentication"))
     {
-        <component type="typeof(App)" render-mode="WebAssemblyPrerendered" />
+        <component type="typeof(App)" render-mode="Static" />
     }
     else
     {
