@@ -2,9 +2,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace ConfTool.Server.PrerenderAuth
+namespace Thinktecture.WebAssembly.WebAssemblyPrerenderingNoop
 {
-    public class JSRuntime : IJSRuntime
+    public class WebAssemblyPrerenderingNoopJSRuntime : IJSRuntime
     {
         public ValueTask<TValue> InvokeAsync<TValue>(string identifier, object[] args)
         {

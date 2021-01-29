@@ -4,7 +4,6 @@ using AutoMapper;
 using ConfTool.Server.GrpcServices;
 using ConfTool.Server.Hubs;
 using ConfTool.Server.Model;
-using ConfTool.Server.PrerenderAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -17,8 +16,7 @@ using ProtoBuf.Grpc.Server;
 using Microsoft.AspNetCore.Authorization;
 using FluentValidation.AspNetCore;
 using ConfTool.Shared.Validation;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Thinktecture.WebAssembly.WebAssemblyPrerenderingNoop;
 
 namespace ConfTool.Server
 {
@@ -33,12 +31,8 @@ namespace ConfTool.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // For prerendering
-            services.AddRemoteAuthentication<RemoteAuthenticationState, RemoteUserAccount, OidcProviderOptions>();
-            services.AddScoped<AuthenticationStateProvider, RemoteAuthenticationService>();
-            services.AddScoped<SignOutSessionStateManager>();
-            services.AddTransient<Microsoft.JSInterop.IJSRuntime, JSRuntime>();
-            
+            services.AddWebAssemblyPrerenderingNoopAuthentication();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddDbContext<ConferencesDbContext>(
