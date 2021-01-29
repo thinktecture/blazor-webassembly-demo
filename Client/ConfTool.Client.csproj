@@ -13,9 +13,9 @@
     <ExternalConsole>true</ExternalConsole>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LiveSharp" Version="1.6.45" />
+    <PackageReference Include="LiveSharp" Version="1.6.52" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="protobuf-net.Grpc" Version="1.0.140" />
+    <PackageReference Include="protobuf-net.Grpc" Version="1.0.147" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.2" PrivateAssets="all" />
@@ -24,7 +24,7 @@
     <PackageReference Include="Grpc.Net.Client" Version="2.34.0" />
     <PackageReference Include="Grpc.Net.Client.Web" Version="2.34.0" />
     <PackageReference Include="Google.Protobuf" Version="3.14.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.34.1">
+    <PackageReference Include="Grpc.Tools" Version="2.35.0">
     <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
