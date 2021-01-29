@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
-namespace Eits.ThinkTecture.Blazor.Prerenderer.PrerenderAuth
+namespace ConfTool.Server.PrerenderAuth
 {
     public class RemoteAuthenticationService : ServerAuthenticationStateProvider, IRemoteAuthenticationService<RemoteAuthenticationState>
     {

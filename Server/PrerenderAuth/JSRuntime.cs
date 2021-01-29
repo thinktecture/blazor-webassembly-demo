@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace Eits.ThinkTecture.Blazor.Prerenderer.PrerenderAuth
+namespace ConfTool.Server.PrerenderAuth
 {
     public class JSRuntime : IJSRuntime
     {
