@@ -36,7 +36,7 @@ else
         </thead>
         <tbody>
             <Virtualize Items="@_conferences" Context="conf">
-                <tr @onclick="() => LoadDetails(conf.ID)">
+                <tr @onclick="() => LoadDetails(conf.ID)" @key="conf.ID">
                     <td>@conf.Title</td>
                 </tr>
             </Virtualize>
