@@ -27,6 +27,7 @@ namespace ConfTool.Server.Model
                         Country = "Germany",
                         DateFrom = new DateTime(2020, 2, 24),
                         DateTo = new DateTime(2020, 2, 28),
+                        DateCreated = new DateTime(2020, 1, 2),
                         Url = "https://www.basta.net/"
                     },
                     new Conference
@@ -37,6 +38,7 @@ namespace ConfTool.Server.Model
                         Country = "England",
                         DateFrom = new DateTime(2020, 4, 20),
                         DateTo = new DateTime(2020, 4, 22),
+                        DateCreated = new DateTime(2020, 3, 1),
                         Url = "https://javascript-conference.com/london/"
                     }, 
                     new Conference
@@ -47,6 +49,7 @@ namespace ConfTool.Server.Model
                         Country = "Germany",
                         DateFrom = new DateTime(2020, 4, 25),
                         DateTo = new DateTime(2020, 4, 25),
+                        DateCreated = new DateTime(2020, 4, 1),
                         Url = "https://sessionize.com/global-azure-bootcamp-hamburg/"
                     },
                     new Conference
@@ -57,6 +60,7 @@ namespace ConfTool.Server.Model
                         Country = "Germany",
                         DateFrom = new DateTime(2020, 6, 8),
                         DateTo = new DateTime(2020, 6, 11),
+                        DateCreated = new DateTime(2020, 6, 1),
                         Url = "https://devopscon.io/berlin-de/"
                     },
                     new Conference
@@ -67,6 +71,7 @@ namespace ConfTool.Server.Model
                         Country = "Germany",
                         DateFrom = new DateTime(2020, 9, 21),
                         DateTo = new DateTime(2020, 9, 25),
+                        DateCreated = new DateTime(2020, 9, 1),
                         Url = "https://www.basta.net/"
                     },
                     new Conference
@@ -77,6 +82,7 @@ namespace ConfTool.Server.Model
                         Country = "USA",
                         DateFrom = new DateTime(2020, 9, 28),
                         DateTo = new DateTime(2020, 10, 1),
+                        DateCreated = new DateTime(2020, 9, 1),
                         Url = "https://javascript-conference.com/new-york/"
                     });
 
@@ -90,8 +96,9 @@ namespace ConfTool.Server.Model
                         Title = "Conf "+ i,
                         City = "City " + i,
                         Country = "Germany",
-                        DateFrom = new DateTime(2020, 9, 28),
-                        DateTo = new DateTime(2020, 10, 1),
+                        DateFrom = new DateTime(2021, 1, 2),
+                        DateTo = new DateTime(2021, 1, 3),
+                        DateCreated = new DateTime(2020, 1, 1),
                         Url = "https://someconf.com"
                     };
 

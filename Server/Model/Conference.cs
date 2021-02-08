@@ -15,5 +15,6 @@ namespace ConfTool.Server.Model
         public string Country { get; set; }
         public string City { get; set; }
         public string Url { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }

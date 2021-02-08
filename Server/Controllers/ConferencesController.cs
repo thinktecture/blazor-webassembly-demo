@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ConfTool.Server.Hubs;
@@ -37,7 +38,7 @@ namespace ConfTool.Server.Controllers
         [HttpGet]
         public async Task<IEnumerable<Shared.DTO.ConferenceOverview>> Get()
         {
-            var conferences = await _conferencesDbContext.Conferences.ToListAsync();
+            var conferences = await _conferencesDbContext.Conferences.OrderByDescending(c => c.DateCreated).ToListAsync();
 
             return _mapper.Map<IEnumerable<Shared.DTO.ConferenceOverview>>(conferences);
         }
@@ -64,6 +65,8 @@ namespace ConfTool.Server.Controllers
             }
 
             var conf = _mapper.Map<Model.Conference>(conference);
+            conf.DateCreated = DateTime.UtcNow;
+
             _conferencesDbContext.Conferences.Add(conf);
             await _conferencesDbContext.SaveChangesAsync();
 
