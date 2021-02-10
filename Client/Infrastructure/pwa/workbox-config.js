@@ -8,7 +8,7 @@ module.exports = {
     navigateFallback: "/index.html",
     clientsClaim: true,
     runtimeCaching: [{
-        urlPattern: "https://localhost:5001/api/conferences/",
+        urlPattern: "https://localhost:5003/api/conferences/",
         handler: "NetworkFirst",
         options: {
             cacheName: "conferencesApi",
