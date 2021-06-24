@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="bunit.web" Version="1.1.5" />
-    <PackageReference Include="bunit.xunit" Version="1.0.0-preview-01" />
+    <PackageReference Include="bunit.xunit" Version="1.0.0-preview-02" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.console" Version="2.4.1">
