@@ -6,7 +6,7 @@
   </PropertyGroup>
     
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.2.3" />
+    <PackageReference Include="FluentValidation" Version="10.3.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
@@ -15,7 +15,7 @@
     <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="protobuf-net.Grpc" Version="1.0.157" />
+    <PackageReference Include="protobuf-net.Grpc" Version="1.0.158" />
   </ItemGroup>
     
   <ItemGroup>
