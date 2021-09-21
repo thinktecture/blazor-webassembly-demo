@@ -14,20 +14,20 @@
 
 <h1>Server Time</h1>
 
-<p>Current time: @currentTimeFromServer</p>
+<p>Current time: @_currentTimeFromServer</p>
 
-<button class="btn btn-primary" @onclick="StartTime" disabled="@(cts != null)">Start</button>
-<button class="btn btn-primary" @onclick="StopTime" disabled="@(cts == null)">Stop</button>
+<button class="btn btn-primary" @onclick="StartTime" disabled="@(_cts != null)">Start</button>
+<button class="btn btn-primary" @onclick="StopTime" disabled="@(_cts == null)">Stop</button>
 
 @code {
-    private DateTime currentTimeFromServer;
-    private CancellationTokenSource cts;
+    private DateTime _currentTimeFromServer;
+    private CancellationTokenSource _cts;
 
     private async Task StartTime()
     {
         var clock = _channel.CreateGrpcService<ITimeService>();
-        cts = new CancellationTokenSource();
-        var options = new CallOptions(cancellationToken: cts.Token);
+        _cts = new CancellationTokenSource();
+        var options = new CallOptions(cancellationToken: _cts.Token);
 
         Console.WriteLine($"Current local time: {DateTime.UtcNow}");
 
@@ -35,7 +35,7 @@
         {
             await foreach (var time in clock.SubscribeAsync(new CallContext(options)))
             {
-                currentTimeFromServer = time.Time;
+                _currentTimeFromServer = time.Time;
                 StateHasChanged();
                 Console.WriteLine($"Time from server: {time.Time}");
             }
@@ -46,7 +46,7 @@
 
     private void StopTime()
     {
-        cts?.Cancel();
-        cts = null;
+        _cts?.Cancel();
+        _cts = null;
     }
 }

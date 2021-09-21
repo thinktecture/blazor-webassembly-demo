@@ -15,19 +15,17 @@ namespace ConfTool.ClientModules.Conferences.Services
 {
     public class ConferencesServiceClientGrpc : IConferencesServiceClient
     {
-        private IConferencesService _client;
+        private readonly IConferencesService _client;
         //private Conference.Conferences.ConferencesClient _client;
 
-        private IConfiguration _config;
-        private string _baseUrl;
+        private readonly string _baseUrl;
         private HubConnection _hubConnection;
 
         public event EventHandler ConferenceListChanged;
 
         public ConferencesServiceClientGrpc(IConfiguration config, GrpcChannel channel, CallInvoker invoker)
         {
-            _config = config;
-            _baseUrl = _config[Configuration.BackendUrlKey];
+            _baseUrl = config[Configuration.BackendUrlKey];
 
             //_client = new Conference.Conferences.ConferencesClient(channel);
             _client = channel.CreateGrpcService<IConferencesService>();

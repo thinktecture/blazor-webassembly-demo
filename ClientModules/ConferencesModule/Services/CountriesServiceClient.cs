@@ -9,17 +9,14 @@ namespace ConfTool.ClientModules.Conferences.Services
 {
     public class CountriesServiceClient
     {
-        private IConfiguration _config;
-        private HttpClient _anonHttpClient;
-        private string _baseUrl;
-        private string _countriesUrl;
+        private readonly HttpClient _anonHttpClient;
+        private readonly string _countriesUrl;
 
         public CountriesServiceClient(IConfiguration config, IHttpClientFactory httpClientFactory)
         {
-            _config = config;
             _anonHttpClient = httpClientFactory.CreateClient("ConfTool.ServerAPI.Anon");
-            _baseUrl = _config[Configuration.BackendUrlKey];
-            _countriesUrl = new Uri(new Uri(_baseUrl), "api/countries/").ToString();
+            var baseUrl = config[Configuration.BackendUrlKey];
+            _countriesUrl = new Uri(new Uri(baseUrl), "api/countries/").ToString();
         }
 
         public async Task<List<string>> ListCountries()

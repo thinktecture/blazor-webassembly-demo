@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace ConfTool.Server.Controllers
 {
@@ -19,17 +18,14 @@ namespace ConfTool.Server.Controllers
     [Produces("application/json")]
     public class ConferencesController : ControllerBase
     {
-        private readonly ILogger<ConferencesController> _logger;
         private readonly ConferencesDbContext _conferencesDbContext;
         private readonly IMapper _mapper;
         private readonly IHubContext<ConferencesHub> _hubContext;
 
-        public ConferencesController(ILogger<ConferencesController> logger, 
-            ConferencesDbContext conferencesDbContext, 
+        public ConferencesController(ConferencesDbContext conferencesDbContext, 
             IMapper mapper,
             IHubContext<ConferencesHub> hubContext)
         {
-            _logger = logger;
             _conferencesDbContext = conferencesDbContext;
             _mapper = mapper;
             _hubContext = hubContext;

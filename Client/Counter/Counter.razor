@@ -13,27 +13,27 @@
 
 <h1>Streaming Counter</h1>
 
-<p>Current value: @currentCount</p>
+<p>Current value: @_currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount" disabled="@(cts != null)">Start</button>
-<button class="btn btn-primary" @onclick="StopCount" disabled="@(cts == null)">Stop</button>
+<button class="btn btn-primary" @onclick="IncrementCount" disabled="@(_cts != null)">Start</button>
+<button class="btn btn-primary" @onclick="StopCount" disabled="@(_cts == null)">Stop</button>
 
 @code {
-    private int currentCount = 0;
-    private CancellationTokenSource cts;
+    private int _currentCount = 0;
+    private CancellationTokenSource _cts;
 
     private async Task IncrementCount()
     {
-        cts = new CancellationTokenSource();
+        _cts = new CancellationTokenSource();
 
         var client = new Count.Counter.CounterClient(_channel);
-        var call = client.StartCounter(new CounterRequest() { Start = currentCount }, cancellationToken: cts.Token);
+        var call = client.StartCounter(new CounterRequest() { Start = _currentCount }, cancellationToken: _cts.Token);
 
         try
         {
             await foreach (var message in call.ResponseStream.ReadAllAsync())
             {
-                currentCount = message.Count;
+                _currentCount = message.Count;
                 StateHasChanged();
             }
         }
@@ -45,7 +45,7 @@
 
     private void StopCount()
     {
-        cts?.Cancel();
-        cts = null;
+        _cts?.Cancel();
+        _cts = null;
     }
 }

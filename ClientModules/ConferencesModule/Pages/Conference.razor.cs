@@ -14,11 +14,8 @@ namespace ConfTool.ClientModules.Conferences.Pages
     {
         [Parameter]
         public string Mode { get; set; }
-
         [Parameter]
         public Guid Id { get; set; }
-
-        private bool _isShow { get; set; }
 
         [Inject]
         private IDialogService _alert { get; set; }
@@ -29,7 +26,8 @@ namespace ConfTool.ClientModules.Conferences.Pages
 
         private ConferenceDetails _conferenceDetails;
         private List<string> _countries;
-
+        private bool _isShow;
+        
         public Conference()
         {
             _conferenceDetails = new ConferenceDetails

@@ -1,6 +1,6 @@
 ﻿namespace ConfTool.ClientModules.Conferences
 {
-    internal class Configuration
+    internal static class Configuration
     {
         public const string BackendUrlKey = "Conferences:BackendUrl";
     }

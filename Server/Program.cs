@@ -7,14 +7,14 @@ using Microsoft.Extensions.Hosting;
 
 namespace ConfTool.Server
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args)
+        private static IWebHost BuildWebHost(string[] args)
         {
             var host = WebHost.CreateDefaultBuilder(args)
                 .UseConfiguration(new ConfigurationBuilder()
@@ -23,12 +23,10 @@ namespace ConfTool.Server
                 .UseStartup<Startup>()
                 .Build();
 
-            using (var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<ConferencesDbContext>();
-                DataGenerator.Initialize(services);
-            }
+            using var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<ConferencesDbContext>();
+            DataGenerator.Initialize(services);
 
             return host;
         }

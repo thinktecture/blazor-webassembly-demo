@@ -21,13 +21,13 @@ namespace ConfTool.Server
 {
     public class Startup
     {
+        private IConfiguration _configuration { get; }
+     
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -41,7 +41,7 @@ namespace ConfTool.Server
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    Configuration.Bind("Oidc", options);
+                    _configuration.Bind("Oidc", options);
                     options.RefreshOnIssuerKeyNotFound = true;
                 });
 

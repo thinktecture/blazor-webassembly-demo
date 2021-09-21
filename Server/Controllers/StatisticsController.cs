@@ -13,8 +13,7 @@ namespace ConfTool.Server.Controllers
     {
         private readonly ConferencesDbContext _conferencesDbContext;
 
-        public StatisticsController(
-            ConferencesDbContext conferencesDbContext)
+        public StatisticsController(ConferencesDbContext conferencesDbContext)
         {
             _conferencesDbContext = conferencesDbContext;
         }

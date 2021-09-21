@@ -1,6 +1,6 @@
 ﻿namespace ConfTool.ClientModules.Conferences.Components
 {
-    public class ConferenceComponentDisplayModes
+    public static class ConferenceComponentDisplayModes
     {
         public const string Show = "show";
         public const string Edit = "edit";

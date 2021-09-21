@@ -11,19 +11,17 @@ namespace ConfTool.ClientModules.Conferences.Services
 {
     public class ConferencesServiceClientHttp : IConferencesServiceClient
     {
-        private IConfiguration _config;
-        private HttpClient _secureHttpClient;
-        private string _baseUrl;
-        private string _conferencesUrl;
+        private readonly HttpClient _secureHttpClient;
+        private readonly string _baseUrl;
+        private readonly string _conferencesUrl;
         private HubConnection _hubConnection;
 
         public event EventHandler ConferenceListChanged;
 
         public ConferencesServiceClientHttp(IConfiguration config, IHttpClientFactory httpClientFactory)
         {
-            _config = config;
             _secureHttpClient = httpClientFactory.CreateClient("Conferences.ServerAPI");
-            _baseUrl = _config[Configuration.BackendUrlKey];
+            _baseUrl = config[Configuration.BackendUrlKey];
             _conferencesUrl = new Uri(new Uri(_baseUrl), "api/conferences/").ToString();
         }
 

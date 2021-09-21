@@ -10,21 +10,18 @@ using ConfTool.Shared.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace ConfTool.Server.GrpcServices
 {
     [Authorize]
     public class ConferencesServiceCodeFirst : IConferencesService
     {
-        private readonly ILogger<ConferencesServiceCodeFirst> _logger;
         private readonly ConferencesDbContext _conferencesDbContext;
         private readonly IMapper _mapper;
         private readonly IHubContext<ConferencesHub> _hubContext;
 
-        public ConferencesServiceCodeFirst(ILogger<ConferencesServiceCodeFirst> logger, ConferencesDbContext conferencesDbContext, IMapper mapper, IHubContext<ConferencesHub> hubContext)
+        public ConferencesServiceCodeFirst(ConferencesDbContext conferencesDbContext, IMapper mapper, IHubContext<ConferencesHub> hubContext)
         {
-            _logger = logger;
             _conferencesDbContext = conferencesDbContext;
             _mapper = mapper;
             _hubContext = hubContext;

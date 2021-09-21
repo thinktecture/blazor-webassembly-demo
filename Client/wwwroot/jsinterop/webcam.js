@@ -12,9 +12,9 @@ let width = 100;    // We will scale the photo width to this
 let height = 0;     // This will be computed based on the input stream
 
 export function startVideo(options) {
-    video = document.getElementById(options.videoID);
-    canvas = document.getElementById(options.canvasID);
-    photo = document.getElementById(options.photoID);
+    video = document.getElementById(options.videoId);
+    canvas = document.getElementById(options.canvasId);
+    photo = document.getElementById(options.photoId);
     context = canvas.getContext('2d');
     width = options.width;
 

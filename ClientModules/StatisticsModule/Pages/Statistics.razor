@@ -44,7 +44,7 @@
         _data = JsonSerializer.Serialize(result);
     }
 
-    protected async override void OnAfterRender(bool firstRender)
+    protected override async void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {

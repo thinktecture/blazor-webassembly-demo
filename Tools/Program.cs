@@ -4,7 +4,7 @@ using ProtoBuf.Grpc.Reflection;
 
 namespace ConfTool.Tools
 {
-    class Program
+    internal static class Program
     {
         static void Main(string[] args)
         {

@@ -5,12 +5,12 @@
 <h1>Webcam</h1>
 
 <div class="camera">
-    <video id="@options.VideoID">
+    <video id="@_options.VideoId">
     </video>
 </div>
 
 <div class="output">
-    <img id="@options.PhotoID"
+    <img id="@_options.PhotoId"
          alt="">
 </div>
 
@@ -19,28 +19,28 @@
     <button class="btn btn-primary" @onclick="TakePictureAsync">Take picture</button>
 </div>
 
-<canvas id="@options.CanvasID">
+<canvas id="@_options.CanvasId">
 </canvas>
 
 @code {
-    private WebcamOptions options = new WebcamOptions()
+    private readonly WebcamOptions _options = new WebcamOptions()
     {
-        CanvasID = "canvas",
-        VideoID = "video",
-        PhotoID = "photo"
+        CanvasId = "canvas",
+        VideoId = "video",
+        PhotoId = "photo"
     };
 
     protected override void OnInitialized()
     {
-        options.Width = 320;
+        _options.Width = 320;
     }
 
-    public async Task StartVideoAsync()
+    private async Task StartVideoAsync()
     {
-        await _webcam.StartVideoAsync(options);
+        await _webcam.StartVideoAsync(_options);
     }
 
-    public async Task TakePictureAsync()
+    private async Task TakePictureAsync()
     {
         await _webcam.TakePictureAsync();
     }
