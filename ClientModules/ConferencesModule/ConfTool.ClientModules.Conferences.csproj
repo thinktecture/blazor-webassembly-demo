@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,15 +10,15 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Grpc.Net.Client.Web" Version="2.39.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.10" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.10" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="5.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0-pre1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-rc.1.21452.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.0-rc.1.21452.15" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0-rc.1.21452.15" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="6.0.0-rc.1.21452.15" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0-rc.1.21451.13" />
     <PackageReference Include="protobuf-net.Grpc" Version="1.0.158" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.39.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.40.0-pre1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0-rc.1.21451.13" />
     <PackageReference Include="Blazored.FluentValidation" Version="2.0.1" />
     <PackageReference Include="Blazored.Toast" Version="3.1.2" />
     <PackageReference Include="Blazored.Typeahead" Version="4.6.0" />
