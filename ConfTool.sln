@@ -1,10 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30404.54
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32314.265
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Server", "Server\ConfTool.Server.csproj", "{9624C41A-6C74-49A8-99D1-33B5731A7DB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.Server", "Server\ConfTool.Server.csproj", "{9624C41A-6C74-49A8-99D1-33B5731A7DB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.Client", "Client\ConfTool.Client.csproj", "{CC1FDE90-34E4-4DDF-95BB-2075B5398E4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.Client", "Client\ConfTool.Client.csproj", "{CC1FDE90-34E4-4DDF-95BB-2075B5398E4C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.Shared", "Shared\ConfTool.Shared.csproj", "{FD6E53A5-4802-499A-9DE9-1147761C8379}"
 EndProject
@@ -14,9 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.Tests", "Tests\Con
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientModules", "ClientModules", "{9A4835BB-74F4-44FA-A530-321659595449}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.ClientModules.Conferences", "ClientModules\ConferencesModule\ConfTool.ClientModules.Conferences.csproj", "{B098C4AB-F154-4874-90C0-C548A66C9340}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.ClientModules.Conferences", "ClientModules\ConferencesModule\ConfTool.ClientModules.Conferences.csproj", "{B098C4AB-F154-4874-90C0-C548A66C9340}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfTool.ClientModules.Statistics", "ClientModules\StatisticsModule\ConfTool.ClientModules.Statistics.csproj", "{B1EB1AC5-408E-4CA5-B8B7-BE5B8552B1F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfTool.ClientModules.Statistics", "ClientModules\StatisticsModule\ConfTool.ClientModules.Statistics.csproj", "{B1EB1AC5-408E-4CA5-B8B7-BE5B8552B1F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4Demo", "IdentityServer4Demo\IdentityServer4Demo.csproj", "{27B97EE8-4A95-49AD-B479-59C570CBCC54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{B1EB1AC5-408E-4CA5-B8B7-BE5B8552B1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1EB1AC5-408E-4CA5-B8B7-BE5B8552B1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1EB1AC5-408E-4CA5-B8B7-BE5B8552B1F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27B97EE8-4A95-49AD-B479-59C570CBCC54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27B97EE8-4A95-49AD-B479-59C570CBCC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27B97EE8-4A95-49AD-B479-59C570CBCC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27B97EE8-4A95-49AD-B479-59C570CBCC54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
