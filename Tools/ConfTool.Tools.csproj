@@ -9,6 +9,6 @@
     <ProjectReference Include="..\Shared\ConfTool.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="protobuf-net.Grpc.Reflection" Version="1.0.166" />
+    <PackageReference Include="protobuf-net.Grpc.Reflection" Version="1.0.169" />
   </ItemGroup>
 </Project>
